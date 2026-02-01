@@ -4,6 +4,10 @@ from dataclasses import dataclass
 from typing import Optional
 
 
+# Elder Support 강화 배수
+ELDER_SUPPORT_MULTIPLIER = 1.5  # 에너지 +2 → +3
+
+
 @dataclass
 class InfluenceTier:
     """영향력 계급"""

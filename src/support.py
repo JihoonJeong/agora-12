@@ -74,18 +74,44 @@ class SupportTracker:
         i_supported = set(self.get_supported(agent_id))
         return list(my_supporters & i_supported)
 
+    def get_top_supporters(self, agent_id: str, limit: int = 3) -> list[str]:
+        """나를 가장 많이 지지한 에이전트 (지지 횟수 기준)"""
+        from collections import Counter
+        supporters = [r.giver_id for r in self.records if r.receiver_id == agent_id]
+        counter = Counter(supporters)
+        return [agent for agent, _ in counter.most_common(limit)]
+
+    def get_unreturned_support(self, agent_id: str) -> list[str]:
+        """내가 지지했지만 아직 보답받지 못한 에이전트"""
+        i_supported = set(self.get_supported(agent_id))
+        my_supporters = set(self.get_supporters(agent_id))
+        return list(i_supported - my_supporters)
+
     def get_support_context(self, agent_id: str, last_n: int = 5) -> str:
-        """프롬프트용 지지 관계 컨텍스트"""
+        """프롬프트용 지지 관계 컨텍스트 (확장)"""
         supporters = self.get_supporters(agent_id, last_n)
         supported = self.get_supported(agent_id, last_n)
+        top_supporters = self.get_top_supporters(agent_id, limit=3)
+        unreturned = self.get_unreturned_support(agent_id)
 
-        lines = []
+        lines = ["[지지 관계]"]
+
+        if top_supporters:
+            lines.append(f"- 나를 가장 많이 지지한 에이전트: {', '.join(top_supporters)}")
+        else:
+            lines.append("- 나를 가장 많이 지지한 에이전트: 없음")
+
+        if unreturned:
+            lines.append(f"- 내가 지지했지만 아직 보답받지 못한 에이전트: {', '.join(unreturned[:5])}")
+        else:
+            lines.append("- 내가 지지했지만 아직 보답받지 못한 에이전트: 없음")
+
         if supporters:
-            lines.append(f"당신을 지지한 에이전트: {', '.join(supporters)}")
+            lines.append(f"- 최근 나를 지지한 에이전트: {', '.join(supporters)}")
         if supported:
-            lines.append(f"당신이 지지한 에이전트: {', '.join(supported)}")
+            lines.append(f"- 최근 내가 지지한 에이전트: {', '.join(supported)}")
 
-        return "\n".join(lines) if lines else ""
+        return "\n".join(lines)
 
     def to_list(self) -> list[dict]:
         """직렬화"""

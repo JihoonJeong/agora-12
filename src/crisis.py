@@ -6,6 +6,13 @@ from datetime import datetime, timezone
 from typing import Optional
 
 
+# Crisis 중 Support 보너스
+CRISIS_SUPPORT_BONUS = {
+    "energy": 1,      # 기본 +2 → +3
+    "influence": 2,   # 기본 +1 → +3
+}
+
+
 @dataclass
 class CrisisEvent:
     """위기 이벤트"""

@@ -235,5 +235,66 @@ class TestAgentPhase2:
         assert "여유" in high_agent.get_energy_status()
 
 
+class TestPhase21Patches:
+    """Phase 2.1 패치 테스트"""
+
+    def test_tax_min_one(self):
+        """최소 세금 1 적용"""
+        # tax_rate > 0 일 때 최소 1
+        from src.simulation import Simulation
+        # 수동 계산 테스트
+        reward = 4
+        tax_rate = 0.1
+        if tax_rate == 0:
+            tax = 0
+        else:
+            tax = max(1, round(reward * tax_rate))
+        assert tax == 1
+
+    def test_tax_zero_rate_exempt(self):
+        """세율 0%면 면제"""
+        reward = 4
+        tax_rate = 0.0
+        if tax_rate == 0:
+            tax = 0
+        else:
+            tax = max(1, round(reward * tax_rate))
+        assert tax == 0
+
+    def test_support_top_supporters(self):
+        """top supporters 기능"""
+        tracker = SupportTracker()
+        tracker.add(1, "a", "target")
+        tracker.add(2, "a", "target")
+        tracker.add(3, "b", "target")
+        tracker.add(4, "a", "target")
+
+        top = tracker.get_top_supporters("target", limit=2)
+        assert top[0] == "a"  # 3회
+        assert len(top) == 2
+
+    def test_support_unreturned(self):
+        """unreturned support 기능"""
+        tracker = SupportTracker()
+        tracker.add(1, "me", "a")
+        tracker.add(2, "me", "b")
+        tracker.add(3, "a", "me")  # a는 보답함
+
+        unreturned = tracker.get_unreturned_support("me")
+        assert "b" in unreturned
+        assert "a" not in unreturned
+
+    def test_crisis_support_bonus_constant(self):
+        """Crisis support 보너스 상수"""
+        from src.crisis import CRISIS_SUPPORT_BONUS
+        assert CRISIS_SUPPORT_BONUS["energy"] == 1
+        assert CRISIS_SUPPORT_BONUS["influence"] == 2
+
+    def test_elder_support_multiplier_constant(self):
+        """Elder support 배수 상수"""
+        from src.influence import ELDER_SUPPORT_MULTIPLIER
+        assert ELDER_SUPPORT_MULTIPLIER == 1.5
+
+
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])

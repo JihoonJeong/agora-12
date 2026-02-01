@@ -435,9 +435,12 @@ class Simulation:
         if not agent.spend_energy(cost):
             return False, {"error": "insufficient_energy"}
 
-        # 세금 계산 (반올림)
+        # 세금 계산 (min_tax=1, 세율 0%면 면제)
         tax_rate = self.env.get_market_tax_rate()
-        tax = round(reward * tax_rate)
+        if tax_rate == 0:
+            tax = 0  # 세율 0%면 완전 면제 (면세 특구)
+        else:
+            tax = max(1, round(reward * tax_rate))  # 최소 1
         net_reward = reward - tax
 
         agent.gain_energy(net_reward)
@@ -451,6 +454,9 @@ class Simulation:
 
     def _action_support(self, agent: Agent, target_id: Optional[str], epoch: int) -> tuple[bool, dict]:
         """지지 행동"""
+        from .crisis import CRISIS_SUPPORT_BONUS
+        from .influence import ELDER_SUPPORT_MULTIPLIER
+
         if not target_id or target_id not in self.agents_by_id:
             return False, {"error": "invalid_target"}
 
@@ -463,11 +469,30 @@ class Simulation:
 
         config = self.action_config.get("support", {})
         cost = config.get("cost", 1)
-        receiver_energy = config.get("receiver_energy", 2)
-        receiver_influence = config.get("receiver_influence", 1)
+        base_energy = config.get("receiver_energy", 2)
+        base_influence = config.get("receiver_influence", 1)
 
         if not agent.spend_energy(cost):
             return False, {"error": "insufficient_energy"}
+
+        # 기본 보상
+        receiver_energy = base_energy
+        receiver_influence = base_influence
+        bonuses = []
+
+        # Elder 강화: 에너지 1.5배
+        if self.influence_system.get_tier_name(agent.influence) == "elder":
+            receiver_energy = int(base_energy * ELDER_SUPPORT_MULTIPLIER)
+            bonuses.append("elder_bonus")
+            # 광장 게시판 공지 (위치가 plaza일 때만)
+            if agent.location == "plaza":
+                self.notable_events.append(f"elder_support: {agent.id}->{target.id}")
+
+        # Crisis 보너스: 추가 에너지/영향력
+        if self.crisis_system.is_crisis_active():
+            receiver_energy += CRISIS_SUPPORT_BONUS["energy"]
+            receiver_influence += CRISIS_SUPPORT_BONUS["influence"]
+            bonuses.append("crisis_bonus")
 
         # 수혜자 보상
         target.gain_energy(receiver_energy)
@@ -480,6 +505,7 @@ class Simulation:
             "giver_cost": cost,
             "receiver_energy": receiver_energy,
             "receiver_influence": receiver_influence,
+            "bonuses": bonuses,
         }
 
     def _action_whisper(
