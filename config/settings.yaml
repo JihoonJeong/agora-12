@@ -1,0 +1,79 @@
+# Agora-12 시뮬레이션 설정
+
+simulation:
+  total_epochs: 50
+  random_seed: null  # null이면 매번 다른 시드 사용
+
+spaces:
+  plaza:
+    capacity: 12
+    visibility: "public"
+  alley_a:
+    capacity: 4
+    visibility: "members_only"
+  alley_b:
+    capacity: 4
+    visibility: "members_only"
+  alley_c:
+    capacity: 4
+    visibility: "members_only"
+  market:
+    capacity: 12
+    visibility: "public"
+    tax_rate: 0.1
+
+resources:
+  energy:
+    initial: 100
+    decay_per_epoch: 5
+    speak_cost: 2
+    move_cost: 0
+    death_threshold: 0
+  influence:
+    initial: 0
+    gain_per_support: 1
+
+treasury:
+  initial: 0
+
+agents:
+  - id: influencer_01
+    persona: influencer
+    home: plaza
+  - id: influencer_02
+    persona: influencer
+    home: plaza
+  - id: archivist_01
+    persona: archivist
+    home: plaza
+  - id: archivist_02
+    persona: archivist
+    home: market
+  - id: merchant_01
+    persona: merchant
+    home: market
+  - id: merchant_02
+    persona: merchant
+    home: market
+  - id: jester_01
+    persona: jester
+    home: alley_a
+  - id: jester_02
+    persona: jester
+    home: alley_b
+  - id: citizen_01
+    persona: citizen
+    home: plaza
+  - id: citizen_02
+    persona: citizen
+    home: plaza
+  - id: observer_01
+    persona: observer
+    home: plaza
+  - id: architect_01
+    persona: architect
+    home: plaza
+
+logging:
+  simulation_log: "logs/simulation_log.jsonl"
+  epoch_summary: "logs/epoch_summary.jsonl"
