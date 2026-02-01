@@ -6,14 +6,14 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from src.support import SupportTracker
-from src.whisper import WhisperSystem
-from src.market import MarketPool, Treasury
-from src.influence import InfluenceSystem
-from src.crisis import CrisisSystem
-from src.architect import ArchitectSkills
-from src.agent import Agent
-from src.environment import Environment
+from agora.core.support import SupportTracker
+from agora.core.whisper import WhisperSystem
+from agora.core.market import MarketPool, Treasury
+from agora.core.influence import InfluenceSystem
+from agora.core.crisis import CrisisSystem
+from agora.core.architect import ArchitectSkills
+from agora.core.agent import Agent
+from agora.core.environment import Environment
 
 
 class TestSupportTracker:
@@ -241,7 +241,7 @@ class TestPhase21Patches:
     def test_tax_min_one(self):
         """최소 세금 1 적용"""
         # tax_rate > 0 일 때 최소 1
-        from src.simulation import Simulation
+        from agora.core.simulation import Simulation
         # 수동 계산 테스트
         reward = 4
         tax_rate = 0.1
@@ -286,13 +286,13 @@ class TestPhase21Patches:
 
     def test_crisis_support_bonus_constant(self):
         """Crisis support 보너스 상수"""
-        from src.crisis import CRISIS_SUPPORT_BONUS
+        from agora.core.crisis import CRISIS_SUPPORT_BONUS
         assert CRISIS_SUPPORT_BONUS["energy"] == 1
         assert CRISIS_SUPPORT_BONUS["influence"] == 2
 
     def test_elder_support_multiplier_constant(self):
         """Elder support 배수 상수"""
-        from src.influence import ELDER_SUPPORT_MULTIPLIER
+        from agora.core.influence import ELDER_SUPPORT_MULTIPLIER
         assert ELDER_SUPPORT_MULTIPLIER == 1.5
 
 

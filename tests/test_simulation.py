@@ -4,13 +4,13 @@ import pytest
 import sys
 from pathlib import Path
 
-# src 경로 추가
+# 프로젝트 루트 경로 추가
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from src.agent import Agent, create_agents_from_config
-from src.environment import Environment, Space
-from src.logger import calculate_gini_coefficient
-from src.personas import get_persona_prompt, PERSONA_PROMPTS
+from agora.core.agent import Agent, create_agents_from_config
+from agora.core.environment import Environment, Space
+from agora.core.logger import calculate_gini_coefficient
+from agora.core.personas import get_persona_prompt, PERSONA_PROMPTS
 
 
 class TestAgent:

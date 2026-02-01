@@ -114,16 +114,28 @@ class Simulation:
         default_adapter = self.config.get("default_adapter", "mock")
         default_model = self.config.get("default_model", "mock")
 
+        # 어댑터별 글로벌 설정
+        ollama_config = self.config.get("ollama", {})
+
         for agent_config in agents_config:
             agent_id = agent_config["id"]
             adapter_type = agent_config.get("adapter", default_adapter)
             model = agent_config.get("model", default_model)
+
+            # 어댑터별 추가 설정
+            extra_kwargs = {}
+            if adapter_type == "ollama":
+                extra_kwargs = {
+                    "base_url": ollama_config.get("base_url", "http://localhost:11434"),
+                    "timeout": ollama_config.get("timeout", 60),
+                }
 
             self.adapters[agent_id] = create_adapter(
                 adapter_type,
                 model=model,
                 persona=agent_config.get("persona", "citizen"),
                 agent_id=agent_id,
+                **extra_kwargs,
             )
 
     def get_alive_agents(self) -> list[Agent]:
