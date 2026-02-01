@@ -33,10 +33,8 @@ class Agent:
         return self.alive and self.energy > 0
 
     def decay_energy(self, amount: int) -> None:
-        """매 에폭 에너지 감소"""
+        """매 에폭 에너지 감소 (사망 처리는 simulation에서)"""
         self.energy = max(0, self.energy - amount)
-        if self.energy <= 0:
-            self.alive = False
 
     def spend_energy(self, cost: int) -> bool:
         """행동에 에너지 소비. 성공 여부 반환"""

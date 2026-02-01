@@ -1,4 +1,4 @@
-"""Agora-12: AI 에이전트 사회 실험 시뮬레이터 (Phase 2)"""
+"""Agora-12 Core Module"""
 
 from .agent import Agent, create_agents_from_config
 from .environment import Environment, Space, Billboard
@@ -7,48 +7,49 @@ from .logger import SimulationLogger, calculate_gini_coefficient
 from .support import SupportTracker, SupportRecord
 from .whisper import WhisperSystem, Suspicion
 from .market import MarketPool, Treasury, TradeRecord
-from .influence import InfluenceSystem, InfluenceTier
-from .crisis import CrisisSystem, CrisisEvent
+from .influence import InfluenceSystem, InfluenceTier, ELDER_SUPPORT_MULTIPLIER
+from .crisis import CrisisSystem, CrisisEvent, CRISIS_SUPPORT_BONUS
 from .architect import ArchitectSkills, ArchitectSkillResult
 from .actions import ActionType, ActionResult, ActionConfig, get_speak_type, get_available_actions
+from .context import build_context, CONTEXT_TEMPLATE, get_energy_status, get_inequality_commentary
+from .history import HistoryEngine, HistoricalEvent
+from .simulation import Simulation
 
 __all__ = [
-    # Agent
     "Agent",
     "create_agents_from_config",
-    # Environment
     "Environment",
     "Space",
     "Billboard",
-    # Personas
     "PERSONA_PROMPTS",
     "get_persona_prompt",
-    # Logger
     "SimulationLogger",
     "calculate_gini_coefficient",
-    # Support
     "SupportTracker",
     "SupportRecord",
-    # Whisper
     "WhisperSystem",
     "Suspicion",
-    # Market
     "MarketPool",
     "Treasury",
     "TradeRecord",
-    # Influence
     "InfluenceSystem",
     "InfluenceTier",
-    # Crisis
+    "ELDER_SUPPORT_MULTIPLIER",
     "CrisisSystem",
     "CrisisEvent",
-    # Architect
+    "CRISIS_SUPPORT_BONUS",
     "ArchitectSkills",
     "ArchitectSkillResult",
-    # Actions
     "ActionType",
     "ActionResult",
     "ActionConfig",
     "get_speak_type",
     "get_available_actions",
+    "build_context",
+    "CONTEXT_TEMPLATE",
+    "get_energy_status",
+    "get_inequality_commentary",
+    "HistoryEngine",
+    "HistoricalEvent",
+    "Simulation",
 ]

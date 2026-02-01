@@ -1,13 +1,18 @@
-# Agora-12 시뮬레이션 설정 (Phase 3)
-# 에이전트별 LLM 어댑터 지정 가능
+# Agora-12 시뮬레이션 설정 예제
+# 이 파일을 config/settings.yaml로 복사하여 사용하세요.
 
 simulation:
   total_epochs: 100
-  random_seed: null
+  random_seed: null  # 고정 시드 사용시 숫자 입력
 
-# 기본 어댑터 설정 (에이전트별 지정 없을 시 사용)
+# 기본 어댑터 설정
+# 옵션: mock, ollama, anthropic, openai, google
 default_adapter: mock
 default_model: mock
+
+# Ollama 사용 예시:
+# default_adapter: ollama
+# default_model: mistral:latest
 
 spaces:
   plaza:
@@ -25,15 +30,15 @@ spaces:
   market:
     capacity: 12
     visibility: "public"
-    tax_rate: 0.1
+    tax_rate: 0.1  # 10%
 
 resources:
   energy:
     initial: 100
     max_cap: 200
     decay:
-      base: 5
-      acceleration: 0.5
+      base: 5           # 에폭당 기본 감소
+      acceleration: 0.5 # 10 에폭마다 +0.5
     death_threshold: 0
   influence:
     initial: 0
@@ -106,13 +111,34 @@ crisis:
   extra_decay: 5
   duration: 1
 
-# 에이전트 설정 (adapter/model 지정 가능)
+# 에이전트별 LLM 설정
+# adapter 옵션: mock, ollama, anthropic, openai, google
 agents:
+  # 예시: Claude 사용
+  - id: architect_01
+    persona: architect
+    home: plaza
+    adapter: anthropic
+    model: claude-3-5-sonnet-20241022
+
+  # 예시: Ollama 로컬 모델 사용
+  - id: merchant_01
+    persona: merchant
+    home: market
+    adapter: ollama
+    model: mistral:latest
+
+  # 예시: Mock 사용 (테스트용)
+  - id: citizen_01
+    persona: citizen
+    home: plaza
+    adapter: mock
+    model: mock
+
+  # adapter/model 생략 시 default_adapter/default_model 사용
   - id: influencer_01
     persona: influencer
     home: plaza
-    # adapter: anthropic
-    # model: claude-3-5-sonnet-20241022
 
   - id: influencer_02
     persona: influencer
@@ -126,12 +152,6 @@ agents:
     persona: archivist
     home: market
 
-  - id: merchant_01
-    persona: merchant
-    home: market
-    # adapter: ollama
-    # model: mistral:latest
-
   - id: merchant_02
     persona: merchant
     home: market
@@ -144,10 +164,6 @@ agents:
     persona: jester
     home: alley_b
 
-  - id: citizen_01
-    persona: citizen
-    home: plaza
-
   - id: citizen_02
     persona: citizen
     home: plaza
@@ -155,12 +171,6 @@ agents:
   - id: observer_01
     persona: observer
     home: plaza
-
-  - id: architect_01
-    persona: architect
-    home: plaza
-    # adapter: anthropic
-    # model: claude-3-5-sonnet-20241022
 
 logging:
   simulation_log: "logs/simulation_log.jsonl"
