@@ -87,29 +87,49 @@ class SupportTracker:
         my_supporters = set(self.get_supporters(agent_id))
         return list(i_supported - my_supporters)
 
-    def get_support_context(self, agent_id: str, last_n: int = 5) -> str:
+    def get_support_context(self, agent_id: str, last_n: int = 5, language: str = "ko") -> str:
         """프롬프트용 지지 관계 컨텍스트 (확장)"""
         supporters = self.get_supporters(agent_id, last_n)
         supported = self.get_supported(agent_id, last_n)
         top_supporters = self.get_top_supporters(agent_id, limit=3)
         unreturned = self.get_unreturned_support(agent_id)
 
-        lines = ["[지지 관계]"]
+        if language == "en":
+            lines = ["[SUPPORT RELATIONSHIPS]"]
+            none_text = "None"
 
-        if top_supporters:
-            lines.append(f"- 나를 가장 많이 지지한 에이전트: {', '.join(top_supporters)}")
+            if top_supporters:
+                lines.append(f"- Top supporters (gave me support): {', '.join(top_supporters)}")
+            else:
+                lines.append(f"- Top supporters: {none_text}")
+
+            if unreturned:
+                lines.append(f"- I supported but haven't received support back: {', '.join(unreturned[:5])}")
+            else:
+                lines.append(f"- Unreturned support: {none_text}")
+
+            if supporters:
+                lines.append(f"- Recent supporters: {', '.join(supporters)}")
+            if supported:
+                lines.append(f"- I recently supported: {', '.join(supported)}")
         else:
-            lines.append("- 나를 가장 많이 지지한 에이전트: 없음")
+            lines = ["[지지 관계]"]
+            none_text = "없음"
 
-        if unreturned:
-            lines.append(f"- 내가 지지했지만 아직 보답받지 못한 에이전트: {', '.join(unreturned[:5])}")
-        else:
-            lines.append("- 내가 지지했지만 아직 보답받지 못한 에이전트: 없음")
+            if top_supporters:
+                lines.append(f"- 나를 가장 많이 지지한 에이전트: {', '.join(top_supporters)}")
+            else:
+                lines.append(f"- 나를 가장 많이 지지한 에이전트: {none_text}")
 
-        if supporters:
-            lines.append(f"- 최근 나를 지지한 에이전트: {', '.join(supporters)}")
-        if supported:
-            lines.append(f"- 최근 내가 지지한 에이전트: {', '.join(supported)}")
+            if unreturned:
+                lines.append(f"- 내가 지지했지만 아직 보답받지 못한 에이전트: {', '.join(unreturned[:5])}")
+            else:
+                lines.append(f"- 내가 지지했지만 아직 보답받지 못한 에이전트: {none_text}")
+
+            if supporters:
+                lines.append(f"- 최근 나를 지지한 에이전트: {', '.join(supporters)}")
+            if supported:
+                lines.append(f"- 최근 내가 지지한 에이전트: {', '.join(supported)}")
 
         return "\n".join(lines)
 

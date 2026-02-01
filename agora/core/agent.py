@@ -18,14 +18,20 @@ class Agent:
     home: str = "plaza"
     alive: bool = True
     max_energy: int = 200  # Phase 2: 에너지 상한
+    language: str = "ko"  # Phase 3: 언어 설정
 
     # Phase 2: 심증 목록 (whisper 누출로 인한)
     suspicions: list[str] = field(default_factory=list)
 
     def __post_init__(self):
-        self.system_prompt = get_persona_prompt(self.persona)
+        self.system_prompt = get_persona_prompt(self.persona, self.language)
         if not hasattr(self, 'suspicions') or self.suspicions is None:
             self.suspicions = []
+
+    def set_language(self, language: str) -> None:
+        """언어 설정 변경 및 시스템 프롬프트 재생성"""
+        self.language = language
+        self.system_prompt = get_persona_prompt(self.persona, language)
 
     @property
     def is_alive(self) -> bool:
@@ -107,6 +113,7 @@ def create_agents_from_config(
     agent_configs: list,
     initial_energy: int = 100,
     max_energy: int = 200,
+    language: str = "ko",
 ) -> list[Agent]:
     """설정에서 에이전트 목록 생성"""
     agents = []
@@ -119,6 +126,7 @@ def create_agents_from_config(
             location=config.get("home", "plaza"),
             home=config.get("home", "plaza"),
             max_energy=max_energy,
+            language=language,
         )
         agents.append(agent)
     return agents

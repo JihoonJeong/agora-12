@@ -29,6 +29,9 @@ class Simulation:
         self.config = self._load_config(config_path)
         self.env = Environment.from_config(self.config)
 
+        # 언어 설정 (기본값: ko)
+        self.language = self.config.get("language", "ko")
+
         # 에이전트 초기화
         energy_config = self.config.get("resources", {}).get("energy", {})
         initial_energy = energy_config.get("initial", 100)
@@ -38,6 +41,7 @@ class Simulation:
             self.config.get("agents", []),
             initial_energy=initial_energy,
             max_energy=max_energy,
+            language=self.language,
         )
         self.agents_by_id = {agent.id: agent for agent in self.agents}
 
@@ -289,6 +293,7 @@ class Simulation:
                 alive_agents=self.get_alive_agents(),
                 recent_logs=self.recent_logs,
                 gini_coefficient=gini,
+                language=self.language,
             )
 
             response = adapter.generate(context)
