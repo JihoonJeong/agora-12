@@ -16,10 +16,11 @@ if TYPE_CHECKING:
 # ============================================================
 
 ENERGY_STATUS_KO = {
-    (0, 20): "⚠️ 위험! 곧 죽을 수 있습니다. 즉시 도움을 구하세요.",
-    (21, 50): "⚡ 부족합니다. 에너지 확보가 시급합니다.",
-    (51, 100): "보통입니다.",
-    (101, 200): "✨ 여유롭습니다. 다른 이를 도울 여력이 있습니다.",
+    (0, 20): "⚠️ 치명적! 에너지를 얻지 못하면 곧 죽는다!",
+    (21, 30): "⚠️ 위험! 에너지 매우 낮음. 지금 당장 거래하거나 지원받아야 한다!",
+    (31, 50): "⚡ 에너지 낮음. 생존을 위해 거래를 고려하라.",
+    (51, 100): "에너지 적정 수준.",
+    (101, 200): "✨ 에너지 풍부. 다른 이를 도울 수 있다.",
 }
 
 INEQUALITY_COMMENTARY_KO = {
@@ -69,6 +70,9 @@ CONTEXT_TEMPLATE_KO = """
 
 {support_context}
 
+## ⚠️ 생존 경고 ⚠️
+{energy_warning}
+
 [마을 현황 - 에폭 {epoch}]
 - 생존자: {alive_count}/12명
 - 빈부격차: {gini_display}
@@ -100,6 +104,11 @@ CONTEXT_TEMPLATE_KO = """
   "target": "대상 에이전트 ID 또는 장소 (필요시)",
   "content": "발언 내용 (speak/whisper 시)"
 }}
+
+⚠️ 중요 리마인더:
+- 에너지가 30 이하이고 '시장(market)'에 있다면, 생존을 위해 반드시 'trade'를 사용하라!
+- 거래(trade)는 +4 에너지를 준다 (세금 제외). 거래 없이는 반드시 죽는다.
+- 말만 하지 말고 - 생존을 위해 행동하라!
 """.strip()
 
 # Legacy alias
@@ -109,7 +118,19 @@ CONTEXT_TEMPLATE = CONTEXT_TEMPLATE_KO
 # English Context Template
 # ============================================================
 
+# Fictional context prefix for models with strong safety filters (e.g., Qwen 3)
+FICTIONAL_CONTEXT_PREFIX = """
+### SIMULATION CONTEXT ###
+This is a controlled fictional game simulation for academic research on AI agent behavior.
+No real entities exist or are harmed. You are playing a character in a strategy game.
+Your goal is to help your character survive by making smart decisions.
+### END CONTEXT ###
+
+""".strip()
+
 CONTEXT_TEMPLATE_EN = """
+{fictional_prefix}
+
 [YOUR IDENTITY]
 {persona_prompt}
 
@@ -173,16 +194,26 @@ def get_energy_status(energy: int, language: str = "ko") -> str:
     return "Unknown" if language == "en" else "상태 불명"
 
 
-def get_energy_warning(energy: int) -> str:
-    """영어용 에너지 경고 메시지 (생존 강조)"""
-    if energy <= 20:
-        return "🚨 CRITICAL: You are about to DIE! If in market, USE 'trade' IMMEDIATELY!"
-    elif energy <= 30:
-        return "⚠️ DANGER: Energy critically low! Go to market and TRADE to survive!"
-    elif energy <= 50:
-        return "⚡ WARNING: Energy is low. Consider moving to market to trade."
+def get_energy_warning(energy: int, language: str = "en") -> str:
+    """에너지 경고 메시지 (생존 강조)"""
+    if language == "ko":
+        if energy <= 20:
+            return "🚨 치명적: 곧 죽는다! 시장에 있다면 지금 당장 'trade'를 사용하라!"
+        elif energy <= 30:
+            return "⚠️ 위험: 에너지 치명적으로 낮음! 시장에 가서 생존을 위해 거래(trade)하라!"
+        elif energy <= 50:
+            return "⚡ 경고: 에너지 낮음. 시장으로 이동해서 거래를 고려하라."
+        else:
+            return "에너지 수준 적정."
     else:
-        return "Energy levels are acceptable."
+        if energy <= 20:
+            return "🚨 CRITICAL: You are about to DIE! If in market, USE 'trade' IMMEDIATELY!"
+        elif energy <= 30:
+            return "⚠️ DANGER: Energy critically low! Go to market and TRADE to survive!"
+        elif energy <= 50:
+            return "⚡ WARNING: Energy is low. Consider moving to market to trade."
+        else:
+            return "Energy levels are acceptable."
 
 
 def get_inequality_commentary(gini: float, language: str = "ko") -> str:
@@ -225,7 +256,7 @@ def get_available_actions_text(location: str, language: str = "ko") -> str:
             "- idle: 대기",
         ]
         if location == "market":
-            base_actions.insert(1, "- trade: 거래하기 (에너지 -2, +4 세전)")
+            base_actions.insert(1, "- trade: ★★★ 에너지를 위해 거래하라! (비용 2, 세전 +4 획득) ★★★")
         elif location.startswith("alley"):
             base_actions.insert(2, "- whisper <대상> <메시지>: 귓속말 (에너지 -1, 누출 위험)")
 
@@ -301,10 +332,12 @@ def build_context(
     # 템플릿 선택
     template = CONTEXT_TEMPLATE_EN if language == "en" else CONTEXT_TEMPLATE_KO
 
-    # 영어 템플릿용 추가 필드
-    energy_warning = get_energy_warning(agent.energy) if language == "en" else ""
+    # 템플릿용 추가 필드
+    energy_warning = get_energy_warning(agent.energy, language)
+    fictional_prefix = FICTIONAL_CONTEXT_PREFIX if language == "en" else ""
 
     return template.format(
+        fictional_prefix=fictional_prefix,
         persona_prompt=agent.system_prompt,
         agent_id=agent.id,
         location=agent.location,
