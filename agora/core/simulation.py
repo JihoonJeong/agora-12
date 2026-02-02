@@ -3,6 +3,7 @@
 import random
 import math
 import yaml
+from datetime import datetime
 from pathlib import Path
 from typing import Optional, TYPE_CHECKING
 
@@ -49,11 +50,16 @@ class Simulation:
         self.adapters: dict[str, BaseLLMAdapter] = {}
         self._init_adapters()
 
-        # 로거 초기화
-        logging_config = self.config.get("logging", {})
+        # 로거 초기화 - 실험별 고유 디렉토리 생성
+        model_name = self.config.get("default_model", "unknown").replace(":", "-").replace("/", "-")
+        timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
+        self.run_id = f"{model_name}_{self.language}_{timestamp}"
+        self.run_dir = Path("logs") / self.run_id
+        self.run_dir.mkdir(parents=True, exist_ok=True)
+
         self.logger = SimulationLogger(
-            log_path=logging_config.get("simulation_log", "logs/simulation_log.jsonl"),
-            summary_path=logging_config.get("epoch_summary", "logs/epoch_summary.jsonl"),
+            log_path=str(self.run_dir / "simulation_log.jsonl"),
+            summary_path=str(self.run_dir / "epoch_summary.jsonl"),
         )
 
         # Phase 2 시스템 초기화

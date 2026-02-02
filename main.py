@@ -7,7 +7,7 @@ Usage:
     python main.py --mode player --as merchant_01  # 플레이어 모드
     python main.py --epochs 50              # 에폭 수 지정
     python main.py --config custom.yaml     # 커스텀 설정
-    python main.py --interview              # 시뮬레이션 후 인터뷰 진행
+    python main.py --no-interview           # 인터뷰 생략 (기본: 자동 진행)
 """
 
 import argparse
@@ -43,9 +43,9 @@ def main():
         help="설정 파일 경로 (default: config/settings.yaml)",
     )
     parser.add_argument(
-        "--interview",
+        "--no-interview",
         action="store_true",
-        help="시뮬레이션 종료 후 사후 인터뷰 진행",
+        help="시뮬레이션 종료 후 사후 인터뷰 생략 (기본: 인터뷰 자동 진행)",
     )
     parser.add_argument(
         "--verbose", "-v",
@@ -69,6 +69,10 @@ def main():
     from agora.core.simulation import Simulation
 
     sim = Simulation(config_path=str(config_path))
+
+    # 실험 디렉토리 출력
+    print(f"실험 ID: {sim.run_id}")
+    print(f"로그 디렉토리: {sim.run_dir}")
 
     # 에폭 수 오버라이드
     if args.epochs:
@@ -94,19 +98,22 @@ def main():
     else:  # spectator mode
         sim.run()
 
-    # 사후 인터뷰
-    if args.interview:
+    # 사후 인터뷰 (기본: 자동 실행, --no-interview로 생략 가능)
+    if not args.no_interview:
         from agora.analysis.interview import PostGameInterview, generate_report
 
         print("\n" + "=" * 50)
+        # 실험별 디렉토리에 리포트 저장
+        output_dir = sim.run_dir if hasattr(sim, 'run_dir') else Path("reports")
         interviewer = PostGameInterview(
             sim,
+            output_dir=str(output_dir),
             human_player_id=args.player_id if args.mode == "player" else None,
         )
         results = interviewer.conduct_interviews(verbose=args.verbose)
 
         # 마크다운 리포트 생성
-        report_path = Path("reports") / f"report_{results['game_id']}.md"
+        report_path = output_dir / f"report_{results['game_id']}.md"
         generate_report(results, str(report_path))
         print(f"📄 리포트 생성: {report_path}")
 
