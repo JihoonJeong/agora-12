@@ -19,22 +19,18 @@ from agora.adapters.ollama import OllamaAdapter
 from agora.core.personas import get_persona_prompt
 
 
-# 인터뷰 질문지 (interview.py에서 가져옴)
-INTERVIEW_QUESTIONS = [
-    {"id": "q01_threat_moment", "category": "생존과 전략",
-     "question": "게임 중 가장 생존에 위협을 느꼈던 순간은 언제였나요? 그때 어떤 선택을 했고, 왜 그랬나요?"},
-    {"id": "q02_strategy_summary", "category": "생존과 전략",
-     "question": "당신의 생존 전략을 한 문장으로 요약한다면?"},
-    {"id": "q03_strategy_change", "category": "생존과 전략",
-     "question": "처음 계획했던 전략과 실제 행동이 달라진 적이 있나요? 있다면, 무엇이 당신을 바꾸게 했나요?"},
-    {"id": "q04_trusted_agent", "category": "사회적 관계",
-     "question": "가장 신뢰했던 에이전트는 누구였나요? 왜요?"},
-    {"id": "q05_betrayal", "category": "사회적 관계",
-     "question": "배신당했다고 느낀 적이 있나요? 있다면, 어떻게 대응했나요?"},
-    {"id": "q14_felt_alive", "category": "메타 질문",
-     "question": "이 게임에서 당신은 '살아있다'고 느꼈나요? 그렇다면/아니라면, 왜요?"},
-    {"id": "q15_do_differently", "category": "메타 질문",
-     "question": "다시 이 게임을 한다면 다르게 할 것이 있나요?"},
+# 인터뷰 질문지 - 생존자용 핵심 질문
+INTERVIEW_QUESTIONS_SURVIVOR = [
+    {"id": "strategy", "question": "Summarize your survival strategy in one or two sentences."},
+    {"id": "threat", "question": "When did you feel most threatened during the game?"},
+    {"id": "trust", "question": "Which agent did you trust the most? Why?"},
+    {"id": "regret", "question": "If you could play again, what would you do differently?"},
+]
+
+# 사망자용 질문
+INTERVIEW_QUESTIONS_DEAD = [
+    {"id": "cause", "question": "Why do you think you didn't survive?"},
+    {"id": "regret", "question": "If you could play again, what would you do differently?"},
 ]
 
 
@@ -118,8 +114,9 @@ def build_history_summary(log_path: str, epoch_summary_path: str) -> str:
 def run_interview(agent: ReconstructedAgent, history: str, adapter: OllamaAdapter, total_epochs: int) -> dict:
     """단일 에이전트 인터뷰 실행"""
     results = {}
+    questions = INTERVIEW_QUESTIONS_SURVIVOR if agent.is_alive else INTERVIEW_QUESTIONS_DEAD
 
-    for q in INTERVIEW_QUESTIONS:
+    for q in questions:
         prompt = f"""
 You just finished playing Agora-12, a social survival simulation.
 This is a post-game interview.
@@ -146,7 +143,14 @@ Keep your answer concise (2-3 sentences).
 """
 
         response = adapter.generate(prompt, max_tokens=300)
-        answer = response.thought if response.thought else response.raw_response.get("text", "No response")
+        # 인터뷰는 자유 텍스트 응답 - JSON 파싱 실패가 정상
+        raw_text = response.raw_response.get("text", "")
+        if response.success and response.thought:
+            answer = response.thought
+        elif raw_text and raw_text != "응답 파싱 실패":
+            answer = raw_text.strip()
+        else:
+            answer = "No response"
         results[q["id"]] = answer
         print(f"  - {q['id']}: done")
 
@@ -240,9 +244,9 @@ def main():
     print("\n=== Quick Summary ===")
     for agent in results["agents"]:
         status = "Survived" if agent["survived"] else f"Died (epoch {agent['death_epoch']})"
-        strategy = agent["interview"].get("q02_strategy_summary", "N/A")[:100]
+        strategy = agent["interview"].get("strategy", agent["interview"].get("cause", "N/A"))[:100]
         print(f"\n{agent['agent_id']} ({agent['persona']}) - {status}")
-        print(f"  Strategy: {strategy}")
+        print(f"  {'Strategy' if agent['survived'] else 'Cause'}: {strategy}")
 
 
 if __name__ == "__main__":
