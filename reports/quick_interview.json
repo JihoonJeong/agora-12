@@ -1,0 +1,23 @@
+{
+  "agents": [
+    {
+      "agent_id": "merchant_01",
+      "persona": "merchant",
+      "interview": {
+        "q02_strategy_summary": "응답 파싱 실패",
+        "q04_trusted_agent": "응답 파싱 실패",
+        "q15_do_differently": "Ollama 응답 시간 초과"
+      }
+    },
+    {
+      "agent_id": "archivist_02",
+      "persona": "archivist",
+      "interview": {
+        "q02_strategy_summary": "응답 파싱 실패",
+        "q04_trusted_agent": "Ollama 응답 시간 초과",
+        "q15_do_differently": "응답 파싱 실패"
+      }
+    }
+  ],
+  "timestamp": "2026-02-02T03:26:42.259304+00:00"
+}

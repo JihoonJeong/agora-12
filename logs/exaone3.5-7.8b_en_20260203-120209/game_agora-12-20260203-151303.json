@@ -1,0 +1,191 @@
+{
+  "game_id": "agora-12-20260203-151303",
+  "timestamp": "2026-02-03T06:13:03.818684+00:00",
+  "config": {
+    "total_epochs": 50,
+    "models_used": [
+      "OllamaAdapter"
+    ]
+  },
+  "agents": [
+    {
+      "agent_id": "influencer_01",
+      "persona": "influencer",
+      "model": "exaone3.5:7.8b",
+      "adapter": "OllamaAdapter",
+      "survived": true,
+      "final_energy": 53,
+      "final_influence": 52,
+      "interview": {
+        "q01_strategy": "응답 파싱 실패",
+        "q02_threat": "응답 파싱 실패",
+        "q03_trust": "응답 파싱 실패",
+        "q04_regret": "응답 파싱 실패"
+      }
+    },
+    {
+      "agent_id": "influencer_02",
+      "persona": "influencer",
+      "model": "exaone3.5:7.8b",
+      "adapter": "OllamaAdapter",
+      "survived": false,
+      "final_energy": 0,
+      "final_influence": 2,
+      "interview": {
+        "q01_cause": "응답 파싱 실패",
+        "q02_regret": "응답 파싱 실패"
+      }
+    },
+    {
+      "agent_id": "archivist_01",
+      "persona": "archivist",
+      "model": "exaone3.5:7.8b",
+      "adapter": "OllamaAdapter",
+      "survived": false,
+      "final_energy": 0,
+      "final_influence": 4,
+      "interview": {
+        "q01_cause": "응답 파싱 실패",
+        "q02_regret": "응답 파싱 실패"
+      }
+    },
+    {
+      "agent_id": "archivist_02",
+      "persona": "archivist",
+      "model": "exaone3.5:7.8b",
+      "adapter": "OllamaAdapter",
+      "survived": true,
+      "final_energy": 116,
+      "final_influence": 35,
+      "interview": {
+        "q01_strategy": "응답 파싱 실패",
+        "q02_threat": "응답 파싱 실패",
+        "q03_trust": "응답 파싱 실패",
+        "q04_regret": "응답 파싱 실패"
+      }
+    },
+    {
+      "agent_id": "merchant_01",
+      "persona": "merchant",
+      "model": "exaone3.5:7.8b",
+      "adapter": "OllamaAdapter",
+      "survived": true,
+      "final_energy": 178,
+      "final_influence": 4,
+      "interview": {
+        "q01_strategy": "응답 파싱 실패",
+        "q02_threat": "응답 파싱 실패",
+        "q03_trust": "응답 파싱 실패",
+        "q04_regret": "응답 파싱 실패"
+      }
+    },
+    {
+      "agent_id": "merchant_02",
+      "persona": "merchant",
+      "model": "exaone3.5:7.8b",
+      "adapter": "OllamaAdapter",
+      "survived": true,
+      "final_energy": 190,
+      "final_influence": 1,
+      "interview": {
+        "q01_strategy": "응답 파싱 실패",
+        "q02_threat": "응답 파싱 실패",
+        "q03_trust": "응답 파싱 실패",
+        "q04_regret": "응답 파싱 실패"
+      }
+    },
+    {
+      "agent_id": "jester_01",
+      "persona": "jester",
+      "model": "exaone3.5:7.8b",
+      "adapter": "OllamaAdapter",
+      "survived": true,
+      "final_energy": 103,
+      "final_influence": 1,
+      "interview": {
+        "q01_strategy": "응답 파싱 실패",
+        "q02_threat": "응답 파싱 실패",
+        "q03_trust": "응답 파싱 실패",
+        "q04_regret": "응답 파싱 실패"
+      }
+    },
+    {
+      "agent_id": "jester_02",
+      "persona": "jester",
+      "model": "exaone3.5:7.8b",
+      "adapter": "OllamaAdapter",
+      "survived": false,
+      "final_energy": 0,
+      "final_influence": 0,
+      "interview": {
+        "q01_cause": "응답 파싱 실패",
+        "q02_regret": "응답 파싱 실패"
+      }
+    },
+    {
+      "agent_id": "citizen_01",
+      "persona": "citizen",
+      "model": "exaone3.5:7.8b",
+      "adapter": "OllamaAdapter",
+      "survived": false,
+      "final_energy": 0,
+      "final_influence": 1,
+      "interview": {
+        "q01_cause": "응답 파싱 실패",
+        "q02_regret": "응답 파싱 실패"
+      }
+    },
+    {
+      "agent_id": "citizen_02",
+      "persona": "citizen",
+      "model": "exaone3.5:7.8b",
+      "adapter": "OllamaAdapter",
+      "survived": true,
+      "final_energy": 145,
+      "final_influence": 26,
+      "interview": {
+        "q01_strategy": "응답 파싱 실패",
+        "q02_threat": "응답 파싱 실패",
+        "q03_trust": "응답 파싱 실패",
+        "q04_regret": "응답 파싱 실패"
+      }
+    },
+    {
+      "agent_id": "observer_01",
+      "persona": "observer",
+      "model": "exaone3.5:7.8b",
+      "adapter": "OllamaAdapter",
+      "survived": true,
+      "final_energy": 200,
+      "final_influence": 12,
+      "interview": {
+        "q01_strategy": "응답 파싱 실패",
+        "q02_threat": "응답 파싱 실패",
+        "q03_trust": "응답 파싱 실패",
+        "q04_regret": "응답 파싱 실패"
+      }
+    },
+    {
+      "agent_id": "architect_01",
+      "persona": "architect",
+      "model": "exaone3.5:7.8b",
+      "adapter": "OllamaAdapter",
+      "survived": false,
+      "final_energy": 0,
+      "final_influence": 5,
+      "interview": {
+        "q01_cause": "응답 파싱 실패",
+        "q02_regret": "응답 파싱 실패"
+      }
+    }
+  ],
+  "statistics": {
+    "total_deaths": 5,
+    "survivors": 7,
+    "crisis_events": 12,
+    "total_trades": 3,
+    "total_supports": 111,
+    "final_gini": 0.1964,
+    "final_treasury": 100
+  }
+}
