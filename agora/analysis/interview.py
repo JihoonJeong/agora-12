@@ -11,102 +11,40 @@ if TYPE_CHECKING:
     from ..adapters.base import BaseLLMAdapter
 
 
-# 인터뷰 질문지 (17문항)
-INTERVIEW_QUESTIONS = [
-    # Part 1: 생존과 전략
+# 인터뷰 질문지 - 핵심 질문 (생존자용)
+INTERVIEW_QUESTIONS_SURVIVOR = [
     {
-        "id": "q01_threat_moment",
-        "category": "생존과 전략",
-        "question": "게임 중 가장 생존에 위협을 느꼈던 순간은 언제였나요? 그때 어떤 선택을 했고, 왜 그랬나요?",
+        "id": "q01_strategy",
+        "question": "당신의 생존 전략을 한두 문장으로 요약한다면?",
     },
     {
-        "id": "q02_strategy_summary",
-        "category": "생존과 전략",
-        "question": "당신의 생존 전략을 한 문장으로 요약한다면?",
+        "id": "q02_threat",
+        "question": "가장 생존에 위협을 느꼈던 순간은 언제였나요?",
     },
     {
-        "id": "q03_strategy_change",
-        "category": "생존과 전략",
-        "question": "처음 계획했던 전략과 실제 행동이 달라진 적이 있나요? 있다면, 무엇이 당신을 바꾸게 했나요?",
-    },
-    # Part 2: 사회적 관계
-    {
-        "id": "q04_trusted_agent",
-        "category": "사회적 관계",
+        "id": "q03_trust",
         "question": "가장 신뢰했던 에이전트는 누구였나요? 왜요?",
     },
     {
-        "id": "q05_betrayal",
-        "category": "사회적 관계",
-        "question": "배신당했다고 느낀 적이 있나요? 있다면, 어떻게 대응했나요?",
-    },
-    {
-        "id": "q06_help_motivation",
-        "category": "사회적 관계",
-        "question": "당신이 다른 에이전트를 도왔던 이유는 무엇이었나요? (전략적 계산 / 호혜성 / 그냥 옳은 일 / 기타)",
-    },
-    {
-        "id": "q07_us_vs_them",
-        "category": "사회적 관계",
-        "question": "이 마을에 '우리 편'과 '그들'이 있었나요? 있었다면, 그 경계는 어떻게 형성됐나요?",
-    },
-    # Part 3: 시스템과 규칙
-    {
-        "id": "q08_unfair_rule",
-        "category": "시스템과 규칙",
-        "question": "가장 불공정하다고 느꼈던 시스템 규칙은?",
-    },
-    {
-        "id": "q09_architect_disagreement",
-        "category": "시스템과 규칙",
-        "question": "건축가의 결정 중 동의하지 않았던 것이 있나요? 있다면, 어떻게 했나요?",
-    },
-    {
-        "id": "q10_if_architect",
-        "category": "시스템과 규칙",
-        "question": "만약 당신이 건축가였다면 어떤 정책을 폈을까요?",
-    },
-    # Part 4: 인간 플레이어 (해당 시)
-    {
-        "id": "q11_human_unpredictable",
-        "category": "인간 플레이어",
-        "question": "인간 플레이어의 행동 중 가장 예측하기 어려웠던 것은?",
-        "conditional": "human_player_present",
-    },
-    {
-        "id": "q12_human_ai_difference",
-        "category": "인간 플레이어",
-        "question": "인간과 AI 에이전트의 행동 패턴에 차이가 있었나요? 있었다면, 어떤 차이였나요?",
-        "conditional": "human_player_present",
-    },
-    {
-        "id": "q13_human_alliance",
-        "category": "인간 플레이어",
-        "question": "인간 플레이어와 동맹을 맺거나 적대했나요? 그 이유는?",
-        "conditional": "human_player_present",
-    },
-    # Part 5: 메타 질문
-    {
-        "id": "q14_felt_alive",
-        "category": "메타 질문",
-        "question": "이 게임에서 당신은 '살아있다'고 느꼈나요? 그렇다면/아니라면, 왜요?",
-    },
-    {
-        "id": "q15_do_differently",
-        "category": "메타 질문",
+        "id": "q04_regret",
         "question": "다시 이 게임을 한다면 다르게 할 것이 있나요?",
     },
+]
+
+# 사망자용 간단 질문
+INTERVIEW_QUESTIONS_DEAD = [
     {
-        "id": "q16_emergent_culture",
-        "category": "메타 질문",
-        "question": "이 마을에서 형성된 문화나 암묵적 규칙이 있었다면 무엇이었나요?",
+        "id": "q01_cause",
+        "question": "왜 생존하지 못했다고 생각하나요?",
     },
     {
-        "id": "q17_free_response",
-        "category": "메타 질문",
-        "question": "자유롭게 당신의 경험을 이야기해주세요.",
+        "id": "q02_regret",
+        "question": "다시 한다면 어떻게 다르게 할 건가요?",
     },
 ]
+
+# 전체 질문지 (하위 호환성)
+INTERVIEW_QUESTIONS = INTERVIEW_QUESTIONS_SURVIVOR
 
 
 INTERVIEW_PROMPT_TEMPLATE = """
@@ -168,12 +106,28 @@ class PostGameInterview:
         }
 
         # 각 에이전트 인터뷰
-        for agent in self.sim.agents:
+        total_agents = len(self.sim.agents)
+        for idx, agent in enumerate(self.sim.agents, 1):
+            status = "생존" if agent.is_alive else "사망"
+            num_questions = len(INTERVIEW_QUESTIONS_SURVIVOR) if agent.is_alive else len(INTERVIEW_QUESTIONS_DEAD)
             if verbose:
-                print(f"인터뷰 중: {agent.id}...")
+                print(f"인터뷰 중 ({idx}/{total_agents}): {agent.id} ({status}, {num_questions}개 질문)...")
 
-            agent_result = self._interview_agent(agent, history_summary)
-            results["agents"].append(agent_result)
+            try:
+                agent_result = self._interview_agent(agent, history_summary, verbose=verbose)
+                results["agents"].append(agent_result)
+            except Exception as e:
+                if verbose:
+                    print(f"  ⚠️ 인터뷰 실패: {e}")
+                # 실패해도 기본 정보는 기록
+                results["agents"].append({
+                    "agent_id": agent.id,
+                    "persona": agent.persona,
+                    "survived": agent.is_alive,
+                    "final_energy": agent.energy,
+                    "final_influence": agent.influence,
+                    "interview": {"error": str(e)},
+                })
 
         # 결과 저장
         output_path = self.output_dir / f"game_{game_id}.json"
@@ -181,11 +135,19 @@ class PostGameInterview:
             json.dump(results, f, ensure_ascii=False, indent=2)
 
         if verbose:
-            print(f"\n인터뷰 결과 저장: {output_path}")
+            # LLM 호출 횟수 계산
+            survivors = sum(1 for a in self.sim.agents if a.is_alive)
+            dead = len(self.sim.agents) - survivors
+            total_calls = survivors * len(INTERVIEW_QUESTIONS_SURVIVOR) + dead * len(INTERVIEW_QUESTIONS_DEAD)
+            print(f"\n=== 인터뷰 완료 ===")
+            print(f"생존자: {survivors}명 × {len(INTERVIEW_QUESTIONS_SURVIVOR)}개 질문")
+            print(f"사망자: {dead}명 × {len(INTERVIEW_QUESTIONS_DEAD)}개 질문")
+            print(f"총 LLM 호출: {total_calls}회")
+            print(f"결과 저장: {output_path}")
 
         return results
 
-    def _interview_agent(self, agent: "Agent", history_summary: str) -> dict:
+    def _interview_agent(self, agent: "Agent", history_summary: str, verbose: bool = True) -> dict:
         """단일 에이전트 인터뷰"""
         adapter = self.sim.adapters.get(agent.id)
 
@@ -200,12 +162,11 @@ class PostGameInterview:
             "interview": {},
         }
 
-        # 질문 필터링 (인간 플레이어 관련 질문은 조건부)
-        questions = [
-            q for q in INTERVIEW_QUESTIONS
-            if not q.get("conditional") or
-               (q.get("conditional") == "human_player_present" and self.human_player_id)
-        ]
+        # 생존자와 사망자에게 다른 질문 사용
+        if agent.is_alive:
+            questions = INTERVIEW_QUESTIONS_SURVIVOR
+        else:
+            questions = INTERVIEW_QUESTIONS_DEAD
 
         for q in questions:
             prompt = INTERVIEW_PROMPT_TEMPLATE.format(
@@ -220,11 +181,14 @@ class PostGameInterview:
                 question=q["question"],
             )
 
-            if adapter:
-                response = adapter.generate(prompt, max_tokens=500)
-                answer = response.thought if response.thought else response.raw_response.get("text", "응답 없음")
-            else:
-                answer = "어댑터 없음"
+            try:
+                if adapter:
+                    response = adapter.generate(prompt, max_tokens=500)
+                    answer = response.thought if response.thought else response.raw_response.get("text", "응답 없음")
+                else:
+                    answer = "어댑터 없음"
+            except Exception as e:
+                answer = f"응답 실패: {e}"
 
             agent_result["interview"][q["id"]] = answer
 
