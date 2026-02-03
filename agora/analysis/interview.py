@@ -184,7 +184,15 @@ class PostGameInterview:
             try:
                 if adapter:
                     response = adapter.generate(prompt, max_tokens=500)
-                    answer = response.thought if response.thought else response.raw_response.get("text", "응답 없음")
+                    # 인터뷰는 자유 텍스트 응답이므로 JSON 파싱 실패가 정상
+                    # raw_response["text"]에 실제 응답이 있음
+                    raw_text = response.raw_response.get("text", "")
+                    if response.success and response.thought:
+                        answer = response.thought
+                    elif raw_text and raw_text != "응답 파싱 실패":
+                        answer = raw_text.strip()
+                    else:
+                        answer = "응답 없음"
                 else:
                     answer = "어댑터 없음"
             except Exception as e:
