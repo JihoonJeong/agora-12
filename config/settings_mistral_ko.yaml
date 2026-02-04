@@ -1,19 +1,19 @@
-# Agora-12 EXAONE English Benchmark Settings
-# Testing English prompts with EXAONE 3.5:7.8b
-# Hypothesis: If EXAONE + English survives, it confirms Korean prompt issue
+# Agora-12 Mistral Korean Benchmark Settings
+# Testing Korean prompts with Mistral 7B
+# Comparison target: EXAONE 3.5:7.8b Korean results
 
 simulation:
   total_epochs: 50
-  random_seed: 44  # Run #3
+  random_seed: 46  # Run #5
 
-# Language setting - English
-language: en
+# Language setting - Korean
+language: ko
 
-# Ollama settings - EXAONE 3.5
+# Ollama settings - Mistral 7B
 default_adapter: ollama
-default_model: exaone3.5:7.8b
+default_model: mistral:7b
 
-# M1 optimization
+# GPU optimization (RTX 4070 Ti)
 ollama:
   base_url: "http://localhost:11434"
   timeout: 180  # 3 min
@@ -99,17 +99,17 @@ influence_tiers:
   commoner:
     min: 0
     max: 4
-    title: "Commoner"
+    title: "평민"
   notable:
     min: 5
     max: 9
-    title: "Notable"
+    title: "유력자"
   elder:
     min: 10
     max: 999
-    title: "Elder"
+    title: "원로"
 
-# Crisis settings (same as other benchmarks)
+# Crisis settings (same as EXAONE benchmarks)
 crisis:
   start_after_epoch: 10
   probability: 0.3
