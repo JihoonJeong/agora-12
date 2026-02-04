@@ -126,6 +126,8 @@ class Simulation:
 
         # 어댑터별 글로벌 설정
         ollama_config = self.config.get("ollama", {})
+        anthropic_config = self.config.get("anthropic", {})
+        google_config = self.config.get("google", {})
 
         for agent_config in agents_config:
             agent_id = agent_config["id"]
@@ -139,6 +141,14 @@ class Simulation:
                     "base_url": ollama_config.get("base_url", "http://localhost:11434"),
                     "timeout": ollama_config.get("timeout", 60),
                 }
+            elif adapter_type == "anthropic":
+                if anthropic_config.get("api_key"):
+                    extra_kwargs["api_key"] = anthropic_config["api_key"]
+                if anthropic_config.get("max_tokens"):
+                    extra_kwargs["max_tokens"] = anthropic_config["max_tokens"]
+            elif adapter_type == "google":
+                if google_config.get("api_key"):
+                    extra_kwargs["api_key"] = google_config["api_key"]
 
             self.adapters[agent_id] = create_adapter(
                 adapter_type,

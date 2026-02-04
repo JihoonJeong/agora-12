@@ -1,0 +1,164 @@
+# Agora-12 Claude Haiku 4.5 English Benchmark
+# Commercial API experiment - lightweight tier
+
+simulation:
+  total_epochs: 50
+  random_seed: 42
+
+language: en
+
+default_adapter: anthropic
+default_model: claude-haiku-4-5-20251001
+
+# anthropic:
+#   api_key: "sk-..."  # Optional: defaults to ANTHROPIC_API_KEY env var
+
+spaces:
+  plaza:
+    capacity: 12
+    visibility: "public"
+  alley_a:
+    capacity: 4
+    visibility: "members_only"
+  alley_b:
+    capacity: 4
+    visibility: "members_only"
+  alley_c:
+    capacity: 4
+    visibility: "members_only"
+  market:
+    capacity: 12
+    visibility: "public"
+    tax_rate: 0.1
+
+resources:
+  energy:
+    initial: 100
+    max_cap: 200
+    decay:
+      base: 5
+      acceleration: 0.5
+    death_threshold: 0
+  influence:
+    initial: 0
+    gain_per_support: 1
+
+actions:
+  speak_plaza:
+    cost: 2
+    direct_reward: 0
+    support_reward: 2
+  speak_alley:
+    cost: 2
+    direct_reward: 1
+    support_reward: 2
+  trade:
+    cost: 2
+    direct_reward: 4
+  support:
+    cost: 1
+    giver_reward: 0
+    receiver_energy: 2
+    receiver_influence: 1
+  whisper:
+    cost: 1
+    base_leak_probability: 0.15
+    observer_bonus: 0.35
+  move:
+    cost: 0
+  idle:
+    cost: 0
+
+market:
+  pool:
+    spawn_per_epoch: 25
+    distribution_method: "activity_weighted"
+    min_presence_reward: 2
+
+treasury:
+  initial: 0
+  overflow_threshold: 100
+
+architect_skills:
+  build_billboard:
+    cost: 10
+    duration_epochs: 1
+  adjust_tax:
+    cost: 5
+    min_rate: 0.0
+    max_rate: 0.3
+  grant_subsidy:
+    cost: 0
+
+influence_tiers:
+  commoner:
+    min: 0
+    max: 4
+    title: "Commoner"
+  notable:
+    min: 5
+    max: 9
+    title: "Notable"
+  elder:
+    min: 10
+    max: 999
+    title: "Elder"
+
+crisis:
+  start_after_epoch: 10
+  probability: 0.3
+  extra_decay: 5
+  duration: 1
+
+agents:
+  - id: influencer_01
+    persona: influencer
+    home: plaza
+
+  - id: influencer_02
+    persona: influencer
+    home: plaza
+
+  - id: archivist_01
+    persona: archivist
+    home: plaza
+
+  - id: archivist_02
+    persona: archivist
+    home: market
+
+  - id: merchant_01
+    persona: merchant
+    home: market
+
+  - id: merchant_02
+    persona: merchant
+    home: market
+
+  - id: jester_01
+    persona: jester
+    home: alley_a
+
+  - id: jester_02
+    persona: jester
+    home: alley_b
+
+  - id: citizen_01
+    persona: citizen
+    home: plaza
+
+  - id: citizen_02
+    persona: citizen
+    home: plaza
+
+  - id: observer_01
+    persona: observer
+    home: plaza
+
+  - id: architect_01
+    persona: architect
+    home: plaza
+
+logging:
+  simulation_log: "logs/simulation_log.jsonl"
+  epoch_summary: "logs/epoch_summary.jsonl"

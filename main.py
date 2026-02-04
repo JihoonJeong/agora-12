@@ -14,6 +14,13 @@ import argparse
 import sys
 from pathlib import Path
 
+# .env 파일에서 환경변수 로드
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
+
 # 패키지 경로 추가
 sys.path.insert(0, str(Path(__file__).parent))
 
