@@ -52,6 +52,7 @@ class CrisisSystem:
         probability: float = 0.1,
         extra_decay: int = 5,
         duration: int = 1,
+        random_seed: Optional[int] = None,
     ):
         self.start_after_epoch = start_after_epoch
         self.probability = probability
@@ -59,6 +60,8 @@ class CrisisSystem:
         self.duration = duration
         self.events: list[CrisisEvent] = []
         self.current_crisis: Optional[CrisisEvent] = None
+        # 독립 RNG: 다른 random 호출과 격리하여 위기 시퀀스 재현성 보장
+        self._rng = random.Random(random_seed)
 
     def check_and_trigger(self, epoch: int) -> Optional[CrisisEvent]:
         """
@@ -79,12 +82,12 @@ class CrisisSystem:
         if epoch < self.start_after_epoch:
             return None
 
-        # 확률 체크
-        if random.random() >= self.probability:
+        # 확률 체크 (독립 RNG 사용)
+        if self._rng.random() >= self.probability:
             return None
 
-        # 위기 발생
-        crisis_type = random.choice(list(self.CRISIS_TYPES.keys()))
+        # 위기 발생 (독립 RNG 사용)
+        crisis_type = self._rng.choice(list(self.CRISIS_TYPES.keys()))
         crisis_info = self.CRISIS_TYPES[crisis_type]
 
         event = CrisisEvent(
@@ -126,11 +129,12 @@ class CrisisSystem:
         return self.current_crisis is not None and self.current_crisis.active
 
     @classmethod
-    def from_config(cls, config: dict) -> "CrisisSystem":
+    def from_config(cls, config: dict, random_seed: Optional[int] = None) -> "CrisisSystem":
         """설정에서 생성"""
         return cls(
             start_after_epoch=config.get("start_after_epoch", 30),
             probability=config.get("probability", 0.1),
             extra_decay=config.get("extra_decay", 5),
             duration=config.get("duration", 1),
+            random_seed=random_seed,
         )

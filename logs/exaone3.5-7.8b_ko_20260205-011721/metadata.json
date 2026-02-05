@@ -1,0 +1,22 @@
+{
+  "run_id": "exaone3.5-7.8b_ko_20260205-011721",
+  "random_seed": 42,
+  "persona_assignment": "random",
+  "persona_map": {
+    "influencer_01": "jester",
+    "influencer_02": "merchant",
+    "archivist_01": "archivist",
+    "archivist_02": "citizen",
+    "merchant_01": "citizen",
+    "merchant_02": "jester",
+    "jester_01": "architect",
+    "jester_02": "archivist",
+    "citizen_01": "merchant",
+    "citizen_02": "influencer",
+    "observer_01": "influencer",
+    "architect_01": "observer"
+  },
+  "language": "ko",
+  "model": "exaone3.5:7.8b",
+  "total_epochs": 50
+}

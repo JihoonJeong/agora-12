@@ -4,7 +4,8 @@
 
 simulation:
   total_epochs: 50
-  random_seed: 46  # Run #5
+  random_seed: 42  # Fixed seed for reproducibility
+  persona_assignment: "random"  # Round 2: persona random assignment
 
 # Language setting - English
 language: en

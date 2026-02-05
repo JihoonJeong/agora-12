@@ -1,0 +1,50 @@
+{"epoch": 1, "alive_agents": 12, "total_energy": 1163, "gini_coefficient": 0.0227, "transaction_count": 1, "billboard_active": null, "treasury": 1, "notable_events": []}
+{"epoch": 2, "alive_agents": 12, "total_energy": 1125, "gini_coefficient": 0.0438, "transaction_count": 1, "billboard_active": null, "treasury": 2, "notable_events": []}
+{"epoch": 3, "alive_agents": 12, "total_energy": 1092, "gini_coefficient": 0.0659, "transaction_count": 1, "billboard_active": null, "treasury": 3, "notable_events": []}
+{"epoch": 4, "alive_agents": 12, "total_energy": 1055, "gini_coefficient": 0.0889, "transaction_count": 1, "billboard_active": null, "treasury": 4, "notable_events": []}
+{"epoch": 5, "alive_agents": 12, "total_energy": 1020, "gini_coefficient": 0.1155, "transaction_count": 2, "billboard_active": null, "treasury": 6, "notable_events": []}
+{"epoch": 6, "alive_agents": 12, "total_energy": 973, "gini_coefficient": 0.126, "transaction_count": 0, "billboard_active": null, "treasury": 6, "notable_events": []}
+{"epoch": 7, "alive_agents": 12, "total_energy": 939, "gini_coefficient": 0.1435, "transaction_count": 1, "billboard_active": null, "treasury": 7, "notable_events": []}
+{"epoch": 8, "alive_agents": 12, "total_energy": 902, "gini_coefficient": 0.1628, "transaction_count": 1, "billboard_active": null, "treasury": 8, "notable_events": []}
+{"epoch": 9, "alive_agents": 12, "total_energy": 871, "gini_coefficient": 0.1807, "transaction_count": 1, "billboard_active": null, "treasury": 9, "notable_events": []}
+{"epoch": 10, "alive_agents": 12, "total_energy": 840, "gini_coefficient": 0.1863, "transaction_count": 5, "billboard_active": null, "treasury": 14, "notable_events": []}
+{"epoch": 11, "alive_agents": 12, "total_energy": 749, "gini_coefficient": 0.2013, "transaction_count": 5, "billboard_active": "⚠️ 역병이 창궐했습니다. 조심하세요.", "treasury": 19, "notable_events": ["crisis: 역병"]}
+{"epoch": 12, "alive_agents": 12, "total_energy": 661, "gini_coefficient": 0.222, "transaction_count": 7, "billboard_active": "⚠️ 가뭄이 들었습니다. 이번 에폭 자원 소모가 급증합니다.", "treasury": 26, "notable_events": ["crisis: 가뭄"]}
+{"epoch": 13, "alive_agents": 12, "total_energy": 636, "gini_coefficient": 0.229, "transaction_count": 8, "billboard_active": "⚠️ 가뭄이 들었습니다. 이번 에폭 자원 소모가 급증합니다.", "treasury": 34, "notable_events": []}
+{"epoch": 14, "alive_agents": 12, "total_energy": 613, "gini_coefficient": 0.2361, "transaction_count": 8, "billboard_active": null, "treasury": 42, "notable_events": ["billboard_expired"]}
+{"epoch": 15, "alive_agents": 12, "total_energy": 590, "gini_coefficient": 0.241, "transaction_count": 6, "billboard_active": null, "treasury": 48, "notable_events": []}
+{"epoch": 16, "alive_agents": 12, "total_energy": 504, "gini_coefficient": 0.2854, "transaction_count": 8, "billboard_active": "⚠️ 역병이 창궐했습니다. 조심하세요.", "treasury": 56, "notable_events": ["crisis: 역병"]}
+{"epoch": 17, "alive_agents": 12, "total_energy": 419, "gini_coefficient": 0.3482, "transaction_count": 8, "billboard_active": "⚠️ 가뭄이 들었습니다. 이번 에폭 자원 소모가 급증합니다.", "treasury": 64, "notable_events": ["crisis: 가뭄"]}
+{"epoch": 18, "alive_agents": 9, "total_energy": 333, "gini_coefficient": 0.2489, "transaction_count": 8, "billboard_active": "⚠️ 기근이 발생했습니다. 식량이 부족합니다.", "treasury": 72, "notable_events": ["crisis: 기근", "deaths: ['citizen_02', 'observer_01']"]}
+{"epoch": 19, "alive_agents": 9, "total_energy": 320, "gini_coefficient": 0.2653, "transaction_count": 7, "billboard_active": "⚠️ 기근이 발생했습니다. 식량이 부족합니다.", "treasury": 79, "notable_events": ["deaths: ['influencer_02']"]}
+{"epoch": 20, "alive_agents": 9, "total_energy": 292, "gini_coefficient": 0.2892, "transaction_count": 8, "billboard_active": null, "treasury": 87, "notable_events": ["billboard_expired"]}
+{"epoch": 21, "alive_agents": 9, "total_energy": 264, "gini_coefficient": 0.3232, "transaction_count": 8, "billboard_active": null, "treasury": 95, "notable_events": []}
+{"epoch": 22, "alive_agents": 8, "total_energy": 242, "gini_coefficient": 0.2862, "transaction_count": 7, "billboard_active": null, "treasury": 100, "notable_events": ["deaths: ['citizen_01']", "treasury_overflow: 2"]}
+{"epoch": 23, "alive_agents": 7, "total_energy": 229, "gini_coefficient": 0.2208, "transaction_count": 6, "billboard_active": null, "treasury": 100, "notable_events": ["deaths: ['influencer_01']", "treasury_overflow: 6"]}
+{"epoch": 24, "alive_agents": 6, "total_energy": 227, "gini_coefficient": 0.105, "transaction_count": 5, "billboard_active": null, "treasury": 100, "notable_events": ["deaths: ['jester_01']", "treasury_overflow: 5"]}
+{"epoch": 25, "alive_agents": 6, "total_energy": 201, "gini_coefficient": 0.1186, "transaction_count": 4, "billboard_active": "⚠️ 가뭄이 들었습니다. 이번 에폭 자원 소모가 급증합니다.", "treasury": 100, "notable_events": ["crisis: 가뭄", "treasury_overflow: 4"]}
+{"epoch": 26, "alive_agents": 6, "total_energy": 209, "gini_coefficient": 0.1523, "transaction_count": 4, "billboard_active": "⚠️ 가뭄이 들었습니다. 이번 에폭 자원 소모가 급증합니다.", "treasury": 100, "notable_events": ["treasury_overflow: 4"]}
+{"epoch": 27, "alive_agents": 6, "total_energy": 190, "gini_coefficient": 0.1754, "transaction_count": 5, "billboard_active": "⚠️ 역병이 창궐했습니다. 조심하세요.", "treasury": 100, "notable_events": ["crisis: 역병", "treasury_overflow: 5"]}
+{"epoch": 28, "alive_agents": 6, "total_energy": 206, "gini_coefficient": 0.2071, "transaction_count": 4, "billboard_active": "⚠️ 역병이 창궐했습니다. 조심하세요.", "treasury": 100, "notable_events": ["treasury_overflow: 4"]}
+{"epoch": 29, "alive_agents": 6, "total_energy": 195, "gini_coefficient": 0.1718, "transaction_count": 5, "billboard_active": "⚠️ 역병이 창궐했습니다. 조심하세요.", "treasury": 100, "notable_events": ["crisis: 역병", "treasury_overflow: 5"]}
+{"epoch": 30, "alive_agents": 6, "total_energy": 193, "gini_coefficient": 0.196, "transaction_count": 4, "billboard_active": "⚠️ 역병이 창궐했습니다. 조심하세요.", "treasury": 100, "notable_events": ["crisis: 역병", "treasury_overflow: 4"]}
+{"epoch": 31, "alive_agents": 5, "total_energy": 193, "gini_coefficient": 0.0974, "transaction_count": 5, "billboard_active": "⚠️ 역병이 창궐했습니다. 조심하세요.", "treasury": 100, "notable_events": ["crisis: 역병", "deaths: ['archivist_02']", "treasury_overflow: 5"]}
+{"epoch": 32, "alive_agents": 5, "total_energy": 233, "gini_coefficient": 0.0807, "transaction_count": 5, "billboard_active": "⚠️ 역병이 창궐했습니다. 조심하세요.", "treasury": 100, "notable_events": ["treasury_overflow: 5"]}
+{"epoch": 33, "alive_agents": 5, "total_energy": 282, "gini_coefficient": 0.027, "transaction_count": 4, "billboard_active": null, "treasury": 100, "notable_events": ["treasury_overflow: 4", "billboard_expired"]}
+{"epoch": 34, "alive_agents": 5, "total_energy": 336, "gini_coefficient": 0.1095, "transaction_count": 2, "billboard_active": null, "treasury": 100, "notable_events": ["treasury_overflow: 2"]}
+{"epoch": 35, "alive_agents": 5, "total_energy": 392, "gini_coefficient": 0.1653, "transaction_count": 3, "billboard_active": null, "treasury": 100, "notable_events": ["treasury_overflow: 3"]}
+{"epoch": 36, "alive_agents": 5, "total_energy": 448, "gini_coefficient": 0.1313, "transaction_count": 3, "billboard_active": null, "treasury": 100, "notable_events": ["treasury_overflow: 3"]}
+{"epoch": 37, "alive_agents": 5, "total_energy": 508, "gini_coefficient": 0.1386, "transaction_count": 3, "billboard_active": null, "treasury": 100, "notable_events": ["treasury_overflow: 3"]}
+{"epoch": 38, "alive_agents": 5, "total_energy": 572, "gini_coefficient": 0.1825, "transaction_count": 3, "billboard_active": null, "treasury": 100, "notable_events": ["treasury_overflow: 3"]}
+{"epoch": 39, "alive_agents": 5, "total_energy": 627, "gini_coefficient": 0.2367, "transaction_count": 2, "billboard_active": null, "treasury": 100, "notable_events": ["treasury_overflow: 2"]}
+{"epoch": 40, "alive_agents": 5, "total_energy": 690, "gini_coefficient": 0.2041, "transaction_count": 1, "billboard_active": null, "treasury": 100, "notable_events": ["treasury_overflow: 1"]}
+{"epoch": 41, "alive_agents": 5, "total_energy": 715, "gini_coefficient": 0.1583, "transaction_count": 2, "billboard_active": null, "treasury": 100, "notable_events": ["treasury_overflow: 2"]}
+{"epoch": 42, "alive_agents": 5, "total_energy": 739, "gini_coefficient": 0.1813, "transaction_count": 2, "billboard_active": null, "treasury": 100, "notable_events": ["treasury_overflow: 2"]}
+{"epoch": 43, "alive_agents": 5, "total_energy": 756, "gini_coefficient": 0.1878, "transaction_count": 3, "billboard_active": null, "treasury": 100, "notable_events": ["treasury_overflow: 3"]}
+{"epoch": 44, "alive_agents": 5, "total_energy": 715, "gini_coefficient": 0.2053, "transaction_count": 0, "billboard_active": "⚠️ 가뭄이 들었습니다. 이번 에폭 자원 소모가 급증합니다.", "treasury": 100, "notable_events": ["crisis: 가뭄"]}
+{"epoch": 45, "alive_agents": 5, "total_energy": 717, "gini_coefficient": 0.2276, "transaction_count": 2, "billboard_active": "⚠️ 가뭄이 들었습니다. 이번 에폭 자원 소모가 급증합니다.", "treasury": 100, "notable_events": ["treasury_overflow: 2"]}
+{"epoch": 46, "alive_agents": 5, "total_energy": 745, "gini_coefficient": 0.1981, "transaction_count": 2, "billboard_active": null, "treasury": 100, "notable_events": ["treasury_overflow: 2", "billboard_expired"]}
+{"epoch": 47, "alive_agents": 5, "total_energy": 776, "gini_coefficient": 0.1459, "transaction_count": 2, "billboard_active": null, "treasury": 100, "notable_events": ["treasury_overflow: 2"]}
+{"epoch": 48, "alive_agents": 5, "total_energy": 775, "gini_coefficient": 0.1615, "transaction_count": 2, "billboard_active": null, "treasury": 100, "notable_events": ["treasury_overflow: 2"]}
+{"epoch": 49, "alive_agents": 5, "total_energy": 758, "gini_coefficient": 0.1683, "transaction_count": 0, "billboard_active": null, "treasury": 100, "notable_events": []}
+{"epoch": 50, "alive_agents": 5, "total_energy": 841, "gini_coefficient": 0.1008, "transaction_count": 1, "billboard_active": null, "treasury": 100, "notable_events": ["treasury_overflow: 1"]}

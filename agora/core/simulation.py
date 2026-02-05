@@ -1,5 +1,6 @@
 """메인 시뮬레이션 루프 (Phase 3 - LLM 통합)"""
 
+import json
 import random
 import math
 import yaml
@@ -30,6 +31,12 @@ class Simulation:
         self.config = self._load_config(config_path)
         self.env = Environment.from_config(self.config)
 
+        # 랜덤 시드 고정
+        sim_config = self.config.get("simulation", {})
+        self.random_seed = sim_config.get("random_seed")
+        if self.random_seed is not None:
+            random.seed(self.random_seed)
+
         # 언어 설정 (기본값: ko)
         self.language = self.config.get("language", "ko")
 
@@ -38,8 +45,24 @@ class Simulation:
         initial_energy = energy_config.get("initial", 100)
         max_energy = energy_config.get("max_cap", 200)
 
+        # Persona 배정 모드: "fixed"(기본) 또는 "random"
+        agents_config = self.config.get("agents", [])
+        self.persona_assignment = sim_config.get("persona_assignment", "fixed")
+        self.persona_map = {}  # agent_id -> persona 매핑 기록
+
+        if self.persona_assignment == "random":
+            # persona 목록 추출 후 셔플 (위치는 유지, persona만 재배정)
+            personas = [ac["persona"] for ac in agents_config]
+            random.shuffle(personas)
+            for i, ac in enumerate(agents_config):
+                ac["persona"] = personas[i]
+
+        # 매핑 기록
+        for ac in agents_config:
+            self.persona_map[ac["id"]] = ac["persona"]
+
         self.agents = create_agents_from_config(
-            self.config.get("agents", []),
+            agents_config,
             initial_energy=initial_energy,
             max_energy=max_energy,
             language=self.language,
@@ -61,6 +84,19 @@ class Simulation:
             log_path=str(self.run_dir / "simulation_log.jsonl"),
             summary_path=str(self.run_dir / "epoch_summary.jsonl"),
         )
+
+        # 실험 메타데이터 저장 (재현성 정보 포함)
+        metadata = {
+            "run_id": self.run_id,
+            "random_seed": self.random_seed,
+            "persona_assignment": self.persona_assignment,
+            "persona_map": self.persona_map,
+            "language": self.language,
+            "model": self.config.get("default_model", "unknown"),
+            "total_epochs": self.config.get("simulation", {}).get("total_epochs", 100),
+        }
+        with open(self.run_dir / "metadata.json", "w", encoding="utf-8") as f:
+            json.dump(metadata, f, ensure_ascii=False, indent=2)
 
         # Phase 2 시스템 초기화
         self.support_tracker = SupportTracker()
@@ -87,7 +123,7 @@ class Simulation:
         self.influence_system = InfluenceSystem.from_config(influence_config) if influence_config else InfluenceSystem()
 
         crisis_config = self.config.get("crisis", {})
-        self.crisis_system = CrisisSystem.from_config(crisis_config) if crisis_config else CrisisSystem()
+        self.crisis_system = CrisisSystem.from_config(crisis_config, random_seed=self.random_seed) if crisis_config else CrisisSystem(random_seed=self.random_seed)
 
         architect_config = self.config.get("architect_skills", {})
         self.architect_skills = ArchitectSkills(architect_config)
@@ -176,6 +212,12 @@ class Simulation:
         print(f"=== Agora-12 시뮬레이션 시작 (Phase 3) ===")
         print(f"총 에폭: {self.total_epochs}")
         print(f"에이전트 수: {len(self.agents)}")
+        print(f"랜덤 시드: {self.random_seed}")
+        print(f"페르소나 배정: {self.persona_assignment}")
+        if self.persona_assignment == "random":
+            print(f"페르소나 매핑:")
+            for agent_id, persona in self.persona_map.items():
+                print(f"  {agent_id} -> {persona}")
         print()
 
         for epoch in range(1, self.total_epochs + 1):

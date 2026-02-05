@@ -1,0 +1,22 @@
+{
+  "run_id": "mistral-7b_ko_20260205-081131",
+  "random_seed": 42,
+  "persona_assignment": "random",
+  "persona_map": {
+    "influencer_01": "jester",
+    "influencer_02": "merchant",
+    "archivist_01": "archivist",
+    "archivist_02": "citizen",
+    "merchant_01": "citizen",
+    "merchant_02": "jester",
+    "jester_01": "architect",
+    "jester_02": "archivist",
+    "citizen_01": "merchant",
+    "citizen_02": "influencer",
+    "observer_01": "influencer",
+    "architect_01": "observer"
+  },
+  "language": "ko",
+  "model": "mistral:7b",
+  "total_epochs": 50
+}

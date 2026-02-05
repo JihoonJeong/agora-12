@@ -5,6 +5,7 @@
 simulation:
   total_epochs: 50
   random_seed: 42  # Same seed for reproducibility
+  persona_assignment: "random"  # Round 2: persona 랜덤 배정
 
 # Language setting - Korean
 language: ko
