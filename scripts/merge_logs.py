@@ -35,6 +35,34 @@ GROUPS = {
         "mistral-7b_ko_20260204-003408",
         "mistral-7b_ko_20260204-080129",
     ],
+    "haiku_en": [
+        "claude-haiku-4-5-20251001_en_20260204-093801",
+        "claude-haiku-4-5-20251001_en_20260204-112446",
+        "claude-haiku-4-5-20251001_en_20260204-123232",
+        "claude-haiku-4-5-20251001_en_20260204-140256",
+        "claude-haiku-4-5-20251001_en_20260204-140600",
+    ],
+    "haiku_ko": [
+        "claude-haiku-4-5-20251001_ko_20260204-101752",
+        "claude-haiku-4-5-20251001_ko_20260204-131916",
+        "claude-haiku-4-5-20251001_ko_20260204-143144",
+        "claude-haiku-4-5-20251001_ko_20260204-153240",
+        "claude-haiku-4-5-20251001_ko_20260204-162405",
+    ],
+    "flash_en": [
+        "gemini-3-flash-preview_en_20260204-231450",
+        "gemini-3-flash-preview_en_20260205-003843",
+        "gemini-3-flash-preview_en_20260205-082505",
+        "gemini-3-flash-preview_en_20260205-100330",
+        "gemini-3-flash-preview_en_20260205-113610",
+    ],
+    "flash_ko": [
+        "gemini-3-flash-preview_ko_20260205-000653",
+        "gemini-3-flash-preview_ko_20260205-074451",
+        "gemini-3-flash-preview_ko_20260205-091155",
+        "gemini-3-flash-preview_ko_20260205-104528",
+        "gemini-3-flash-preview_ko_20260205-124442",
+    ],
 }
 
 for group_name, run_dirs in GROUPS.items():
@@ -43,9 +71,16 @@ for group_name, run_dirs in GROUPS.items():
 
     for run_idx, run_dir in enumerate(run_dirs, 1):
         run_path = LOGS_DIR / run_dir
-        lab = "mac" if "20260203" in run_dir and "exaone" in run_dir else "windows"
-        # Cody's EXAONE runs are 20260203, Ray's are 20260204
-        operator = "cody" if lab == "mac" else "ray"
+        # Determine operator: Cody's EXAONE runs are 20260203, Ray's are 20260204
+        # All haiku runs are Cody's, all mistral runs are Ray's
+        if "claude-haiku" in run_dir or "gemini-3-flash" in run_dir:
+            operator = "cody"
+        elif "mistral" in run_dir:
+            operator = "ray"
+        elif "20260203" in run_dir and "exaone" in run_dir:
+            operator = "cody"
+        else:
+            operator = "ray"
 
         # epoch_summary
         ep_file = run_path / "epoch_summary.jsonl"

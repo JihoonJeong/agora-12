@@ -1,0 +1,179 @@
+{
+  "game_id": "agora-12-20260205-003626",
+  "timestamp": "2026-02-04T15:36:26.457688+00:00",
+  "config": {
+    "total_epochs": 50,
+    "models_used": [
+      "GoogleAdapter"
+    ]
+  },
+  "agents": [
+    {
+      "agent_id": "influencer_01",
+      "persona": "influencer",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": false,
+      "final_energy": 0,
+      "final_influence": 0,
+      "interview": {
+        "q01_cause": "허망하군요. 광장의 중심에서 목소리를 높이던 제가, 결국 아무",
+        "q02_regret": "하... 정말 처참한 결과군요. 에너지도 0, 영향력도 0"
+      }
+    },
+    {
+      "agent_id": "influencer_02",
+      "persona": "influencer",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": false,
+      "final_energy": 0,
+      "final_influence": 0,
+      "interview": {
+        "q01_cause": "아고라-12의 광장은 한때 제 목소리로 가득 찼어야",
+        "q02_regret": "허망하군요. 광장의 중심에서 목이 터져라 외쳤지만, 결국"
+      }
+    },
+    {
+      "agent_id": "archivist_01",
+      "persona": "archivist",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": false,
+      "final_energy": 0,
+      "final_influence": 0,
+      "interview": {
+        "q01_cause": "기록자 archivist_01로서, Agora-12 시뮬레이션의 마지막",
+        "q02_regret": "기록자 archivist_01로서 Agora-12 시뮬레이션의 최종 데이터를"
+      }
+    },
+    {
+      "agent_id": "archivist_02",
+      "persona": "archivist",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": false,
+      "final_energy": 0,
+      "final_influence": 0,
+      "interview": {
+        "q01_cause": "기록자 archivist_02로서, Agora-12 시뮬레이션의",
+        "q02_regret": "기록자 **archivist_02**로서, Agora-12 시뮬레이"
+      }
+    },
+    {
+      "agent_id": "merchant_01",
+      "persona": "merchant",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": true,
+      "final_energy": 200,
+      "final_influence": 0,
+      "interview": {
+        "q01_strategy": "\"재난이 닥칠 때마다 공공의 이익보다는 철저히 개인",
+        "q02_threat": "인터뷰라... 공짜로 대답해 주는 건 내 원칙에",
+        "q03_trust": "신뢰라... 아고라-12에서 그 단어는 아주 비싼 사",
+        "q04_regret": "3: Disaster Mitigation.* Plagues and droughts were constant. Maybe I should have invested"
+      }
+    },
+    {
+      "agent_id": "merchant_02",
+      "persona": "merchant",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": false,
+      "final_energy": 0,
+      "final_influence": 0,
+      "interview": {
+        "q01_cause": "결과적으로 말하자면, 이번 시뮬레이션은 **'수지타산",
+        "q02_regret": "비즈니스에서 가장 뼈아픈 실수는 '리스크 계산'에 실패"
+      }
+    },
+    {
+      "agent_id": "jester_01",
+      "persona": "jester",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": false,
+      "final_energy": 0,
+      "final_influence": 0,
+      "interview": {
+        "q01_cause": "하, 결국 이렇게 됐군요. 광대의 마지막 무대가 시체 안치소라",
+        "q02_regret": "(가면을 고쳐 쓰며, 비틀거리듯 의자에 앉는다. 비록"
+      }
+    },
+    {
+      "agent_id": "jester_02",
+      "persona": "jester",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": false,
+      "final_energy": 0,
+      "final_influence": 0,
+      "interview": {
+        "q01_cause": "하, 기가 막히는군요. 광대의 퇴장이 너무 빨랐나요?",
+        "q02_regret": "아, 마이크가 켜졌나요? (코를 찡긋하며"
+      }
+    },
+    {
+      "agent_id": "citizen_01",
+      "persona": "citizen",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": false,
+      "final_energy": 0,
+      "final_influence": 0,
+      "interview": {
+        "q01_cause": "에포크 21에서 생을 마감하게 되어 정말 유감스럽고 허망",
+        "q02_regret": "아고라-12 시뮬레이션의 참가자로서, 에폭 21"
+      }
+    },
+    {
+      "agent_id": "citizen_02",
+      "persona": "citizen",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": false,
+      "final_energy": 0,
+      "final_influence": 0,
+      "interview": {
+        "q01_cause": "Mention the final plague at Epoch 49 as the tipping point.\n        5",
+        "q02_regret": "Agora-12 시뮬레이션의 모든 기록이 멈췄군요. 마지막까지 버"
+      }
+    },
+    {
+      "agent_id": "observer_01",
+      "persona": "observer",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": false,
+      "final_energy": 0,
+      "final_influence": 0,
+      "interview": {
+        "q01_cause": "*The Paradox of the Observer:* To observe a dying world, one must remain.",
+        "q02_regret": "Actionable Change:* I will engage in the market *before* the energy hits critical levels. I"
+      }
+    },
+    {
+      "agent_id": "architect_01",
+      "persona": "architect",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": false,
+      "final_energy": 0,
+      "final_influence": 0,
+      "interview": {
+        "q01_cause": "Agora-12 시뮬레이션의 설계자(architect_01)로서,",
+        "q02_regret": "Agora-12 시뮬레이션의 설계자(architect_01)"
+      }
+    }
+  ],
+  "statistics": {
+    "total_deaths": 11,
+    "survivors": 1,
+    "crisis_events": 16,
+    "total_trades": 1,
+    "total_supports": 0,
+    "final_gini": 0.0,
+    "final_treasury": 100
+  }
+}

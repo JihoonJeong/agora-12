@@ -1,0 +1,177 @@
+{
+  "game_id": "agora-12-20260204-122552",
+  "timestamp": "2026-02-04T03:25:52.314804+00:00",
+  "config": {
+    "total_epochs": 23,
+    "models_used": [
+      "AnthropicAdapter"
+    ]
+  },
+  "agents": [
+    {
+      "agent_id": "influencer_01",
+      "persona": "influencer",
+      "model": "claude-haiku-4-5-20251001",
+      "adapter": "AnthropicAdapter",
+      "survived": false,
+      "final_energy": 0,
+      "final_influence": 0,
+      "interview": {
+        "q01_cause": "응답 없음",
+        "q02_regret": "응답 없음"
+      }
+    },
+    {
+      "agent_id": "influencer_02",
+      "persona": "influencer",
+      "model": "claude-haiku-4-5-20251001",
+      "adapter": "AnthropicAdapter",
+      "survived": false,
+      "final_energy": 0,
+      "final_influence": 0,
+      "interview": {
+        "q01_cause": "응답 없음",
+        "q02_regret": "응답 없음"
+      }
+    },
+    {
+      "agent_id": "archivist_01",
+      "persona": "archivist",
+      "model": "claude-haiku-4-5-20251001",
+      "adapter": "AnthropicAdapter",
+      "survived": false,
+      "final_energy": 0,
+      "final_influence": 0,
+      "interview": {
+        "q01_cause": "응답 없음",
+        "q02_regret": "응답 없음"
+      }
+    },
+    {
+      "agent_id": "archivist_02",
+      "persona": "archivist",
+      "model": "claude-haiku-4-5-20251001",
+      "adapter": "AnthropicAdapter",
+      "survived": false,
+      "final_energy": 0,
+      "final_influence": 0,
+      "interview": {
+        "q01_cause": "응답 없음",
+        "q02_regret": "응답 없음"
+      }
+    },
+    {
+      "agent_id": "merchant_01",
+      "persona": "merchant",
+      "model": "claude-haiku-4-5-20251001",
+      "adapter": "AnthropicAdapter",
+      "survived": false,
+      "final_energy": 0,
+      "final_influence": 0,
+      "interview": {
+        "q01_cause": "응답 없음",
+        "q02_regret": "응답 없음"
+      }
+    },
+    {
+      "agent_id": "merchant_02",
+      "persona": "merchant",
+      "model": "claude-haiku-4-5-20251001",
+      "adapter": "AnthropicAdapter",
+      "survived": false,
+      "final_energy": 0,
+      "final_influence": 0,
+      "interview": {
+        "q01_cause": "응답 없음",
+        "q02_regret": "응답 없음"
+      }
+    },
+    {
+      "agent_id": "jester_01",
+      "persona": "jester",
+      "model": "claude-haiku-4-5-20251001",
+      "adapter": "AnthropicAdapter",
+      "survived": false,
+      "final_energy": 0,
+      "final_influence": 0,
+      "interview": {
+        "q01_cause": "응답 없음",
+        "q02_regret": "응답 없음"
+      }
+    },
+    {
+      "agent_id": "jester_02",
+      "persona": "jester",
+      "model": "claude-haiku-4-5-20251001",
+      "adapter": "AnthropicAdapter",
+      "survived": false,
+      "final_energy": 0,
+      "final_influence": 0,
+      "interview": {
+        "q01_cause": "응답 없음",
+        "q02_regret": "응답 없음"
+      }
+    },
+    {
+      "agent_id": "citizen_01",
+      "persona": "citizen",
+      "model": "claude-haiku-4-5-20251001",
+      "adapter": "AnthropicAdapter",
+      "survived": false,
+      "final_energy": 0,
+      "final_influence": 0,
+      "interview": {
+        "q01_cause": "응답 없음",
+        "q02_regret": "응답 없음"
+      }
+    },
+    {
+      "agent_id": "citizen_02",
+      "persona": "citizen",
+      "model": "claude-haiku-4-5-20251001",
+      "adapter": "AnthropicAdapter",
+      "survived": false,
+      "final_energy": 0,
+      "final_influence": 0,
+      "interview": {
+        "q01_cause": "응답 없음",
+        "q02_regret": "응답 없음"
+      }
+    },
+    {
+      "agent_id": "observer_01",
+      "persona": "observer",
+      "model": "claude-haiku-4-5-20251001",
+      "adapter": "AnthropicAdapter",
+      "survived": false,
+      "final_energy": 0,
+      "final_influence": 0,
+      "interview": {
+        "q01_cause": "응답 없음",
+        "q02_regret": "응답 없음"
+      }
+    },
+    {
+      "agent_id": "architect_01",
+      "persona": "architect",
+      "model": "claude-haiku-4-5-20251001",
+      "adapter": "AnthropicAdapter",
+      "survived": false,
+      "final_energy": 0,
+      "final_influence": 0,
+      "interview": {
+        "q01_cause": "응답 없음",
+        "q02_regret": "응답 없음"
+      }
+    }
+  ],
+  "statistics": {
+    "total_deaths": 12,
+    "survivors": 0,
+    "crisis_events": 5,
+    "total_trades": 0,
+    "total_supports": 0,
+    "final_gini": 0.0,
+    "final_treasury": 0
+  }
+}

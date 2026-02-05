@@ -1,0 +1,193 @@
+{
+  "game_id": "agora-12-20260205-013224",
+  "timestamp": "2026-02-04T16:32:24.530210+00:00",
+  "config": {
+    "total_epochs": 50,
+    "models_used": [
+      "GoogleAdapter"
+    ]
+  },
+  "agents": [
+    {
+      "agent_id": "influencer_01",
+      "persona": "influencer",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": false,
+      "final_energy": 0,
+      "final_influence": 0,
+      "interview": {
+        "q01_cause": "아고라-12 시뮬레이션의 첫 번째 사망자가 된 influencer_",
+        "q02_regret": "Agora-12 시뮬레이션의 참가자로서, 그리고 가장 먼저 광장에서 사라진"
+      }
+    },
+    {
+      "agent_id": "influencer_02",
+      "persona": "influencer",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": true,
+      "final_energy": 87,
+      "final_influence": 0,
+      "interview": {
+        "q01_strategy": "잦은 기근과 역병 속에서 영향력을 전파하기보다는 시장에서의 거래를",
+        "q02_threat": "Agora-12 시뮬레이션을 마친 influencer_02로서 답변드리",
+        "q03_trust": "Agora-12 시뮬레이션의 종료와 함께 저, **influencer_02",
+        "q04_regret": "Agora-12 시뮬레이션을 마친 **influencer_02**로서 답변드립니다"
+      }
+    },
+    {
+      "agent_id": "archivist_01",
+      "persona": "archivist",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": false,
+      "final_energy": 0,
+      "final_influence": 0,
+      "interview": {
+        "q01_cause": "기록자 archivist_01로서 이번 Agora-12 시뮬레이션의 결과를",
+        "q02_regret": "안녕하십니까. 기록가 archivist_01입니다.\n\n제가 기록해야 할 마지막 페이지가 제가"
+      }
+    },
+    {
+      "agent_id": "archivist_02",
+      "persona": "archivist",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": true,
+      "final_energy": 55,
+      "final_influence": 0,
+      "interview": {
+        "q01_strategy": "기록자로서 광장의 공허한 주장보다는 시장의 실질적인 거래 데이터",
+        "q02_threat": "기록자(Archivist)로서 저는 모든 데이터를 객관적으로 보존하고, 광장에서",
+        "q03_trust": "Agora-12 시뮬레이션을 무사히 마치고 기록을 정리 중인 archivist",
+        "q04_regret": "Influence vs. Truth:* I had 0 influence. While I recorded everything, a truth"
+      }
+    },
+    {
+      "agent_id": "merchant_01",
+      "persona": "merchant",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": true,
+      "final_energy": 200,
+      "final_influence": 0,
+      "interview": {
+        "q01_strategy": "모든 상호작용을 철저히 계산된 거래로 취급하며, 영향력",
+        "q02_threat": "거래는 공정해야 하죠. 이번 인터뷰도 제 생존 전략의",
+        "q03_trust": "Agora-12 시뮬레이션에서 '신뢰'라는 단어는",
+        "q04_regret": "살아남았다는 것, 그리고 200이라는 압도적인 에너지를"
+      }
+    },
+    {
+      "agent_id": "merchant_02",
+      "persona": "merchant",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": true,
+      "final_energy": 200,
+      "final_influence": 0,
+      "interview": {
+        "q01_strategy": "모든 만남을 철저한 계산 아래 '거래'로 치부하며 영향력",
+        "q02_threat": "아고라-12 시뮬레이션에서 살아남은 것은 운이 좋아서가",
+        "q03_trust": "거래는 차갑고 정확해야 합니다. 감정은 시장에서 가장 가치",
+        "q04_regret": "Strategy:* I stayed alive through 50 epochs despite famines and plagues. My"
+      }
+    },
+    {
+      "agent_id": "jester_01",
+      "persona": "jester",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": false,
+      "final_energy": 0,
+      "final_influence": 0,
+      "interview": {
+        "q01_cause": "(비릿한 웃음을 지으며, 헝클어진 광대 모자를 고",
+        "q02_regret": "아, 마이크 켜진 건가요? (비어버린 에너지 바"
+      }
+    },
+    {
+      "agent_id": "jester_02",
+      "persona": "jester",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": false,
+      "final_energy": 0,
+      "final_influence": 0,
+      "interview": {
+        "q01_cause": "아, 질문이 참 따분하군요. 하지만 죽은 자는 말이 없어야 하는데",
+        "q02_regret": "아, 그 질문인가요? (입가에 비릿한 미소를 지으며) 솔"
+      }
+    },
+    {
+      "agent_id": "citizen_01",
+      "persona": "citizen",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": true,
+      "final_energy": 149,
+      "final_influence": 0,
+      "interview": {
+        "q01_strategy": "기근과 역병이 반복되는 가혹한 환경 속에서 영향력보다는",
+        "q02_threat": "안녕하세요. Agora-12 시뮬레이션에서 끝까지 살아남은 citizen_0",
+        "q03_trust": "\"Merchant\" or \"Fellow Citizen\":* Since I survived with 149 energy,",
+        "q04_regret": "Agora-12 시뮬레이션을 무사히 마치고 살아남은 citizen_0"
+      }
+    },
+    {
+      "agent_id": "citizen_02",
+      "persona": "citizen",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": true,
+      "final_energy": 180,
+      "final_influence": 0,
+      "interview": {
+        "q01_strategy": "잦은 기근과 역병 속에서 살아남기 위해 영향력 같은 명예보다는 오",
+        "q02_threat": "안녕하세요, citizen_02입니다. 마지막까지 살아남아 이렇게 인터뷰에",
+        "q03_trust": "Agora-12 시뮬레이션에서 살아남은 citizen_02로서 답변드리겠습니다",
+        "q04_regret": "안녕하세요. citizen_02입니다. 우선 50 에폭이라는 긴 시간"
+      }
+    },
+    {
+      "agent_id": "observer_01",
+      "persona": "observer",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": true,
+      "final_energy": 112,
+      "final_influence": 0,
+      "interview": {
+        "q01_strategy": "수많은 가뭄과 역병 속에서도 침묵하며 군중의 흐름을 관",
+        "q02_threat": "... (침묵)\n\n... (한참을 지켜보다가 입을 엽니다",
+        "q03_trust": "저는 50에폭이라는 긴 시간 동안 아고라의 모든 구석을 소",
+        "q04_regret": "(긴 침묵 끝에 천천히 입을 열며)\n\n...모든 파동"
+      }
+    },
+    {
+      "agent_id": "architect_01",
+      "persona": "architect",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": true,
+      "final_energy": 83,
+      "final_influence": 0,
+      "interview": {
+        "q01_strategy": "잦은 기근과 역병 속에서 살아남기 위해 자원을 극도로 보수적으로",
+        "q02_threat": "아고라-12 시뮬레이션의 설계자(architect_01)",
+        "q03_trust": "Agora-12 시뮬레이션을 무사히 마친 설계자(architect",
+        "q04_regret": "Agora-12 시뮬레이션의 설계자(architect_01)"
+      }
+    }
+  ],
+  "statistics": {
+    "total_deaths": 4,
+    "survivors": 8,
+    "crisis_events": 9,
+    "total_trades": 3,
+    "total_supports": 0,
+    "final_gini": 0.2247,
+    "final_treasury": 100
+  }
+}

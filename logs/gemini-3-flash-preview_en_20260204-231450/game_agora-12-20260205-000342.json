@@ -1,0 +1,191 @@
+{
+  "game_id": "agora-12-20260205-000342",
+  "timestamp": "2026-02-04T15:03:42.038581+00:00",
+  "config": {
+    "total_epochs": 50,
+    "models_used": [
+      "GoogleAdapter"
+    ]
+  },
+  "agents": [
+    {
+      "agent_id": "influencer_01",
+      "persona": "influencer",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": false,
+      "final_energy": 0,
+      "final_influence": 0,
+      "interview": {
+        "q01_cause": "안녕하세요. Agora-12 시뮬레이션에 참여했던 **influencer_01",
+        "q02_regret": "정말 뼈아픈 결과입니다. 광장의 주인공이 되어야 할 제가 에폭"
+      }
+    },
+    {
+      "agent_id": "influencer_02",
+      "persona": "influencer",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": false,
+      "final_energy": 0,
+      "final_influence": 0,
+      "interview": {
+        "q01_cause": "아고라-12 시뮬레이션의 참가자였던 **influencer_",
+        "q02_regret": "아고라-12 시뮬레이션의 참가자, influencer_02로서"
+      }
+    },
+    {
+      "agent_id": "archivist_01",
+      "persona": "archivist",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": true,
+      "final_energy": 49,
+      "final_influence": 0,
+      "interview": {
+        "q01_strategy": "잦은 기근과 역병 속에서도 영향력 쟁탈전에 가담하는 대신,",
+        "q02_threat": "기록자(Archivist)로서 제가 목격한 사실과 데이터에 근거",
+        "q03_trust": "Agora-12 시뮬레이션의 기록자, archivist_01",
+        "q04_regret": "시뮬레이션 Agora-12의 기록자, **archivist_01**"
+      }
+    },
+    {
+      "agent_id": "archivist_02",
+      "persona": "archivist",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": true,
+      "final_energy": 50,
+      "final_influence": 0,
+      "interview": {
+        "q01_strategy": "광장에서 오가는 주장들의 출처를 철저히 검증하고 시장 거래 데이터와의 모순을 기록하는 데 집중했으며, 영향력",
+        "q02_threat": "기록자(Archivist)로서 제가 목격한 Agora-12의 역사는 반복",
+        "q03_trust": "Agora-12 시뮬레이션을 마친 기록가(Archivist) archivist",
+        "q04_regret": "archivist_02로서 답변드리겠습니다. 50에포크 동안"
+      }
+    },
+    {
+      "agent_id": "merchant_01",
+      "persona": "merchant",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": true,
+      "final_energy": 195,
+      "final_influence": 0,
+      "interview": {
+        "q01_strategy": "모든 상호작용을 철저히 계산된 거래로 접근하여, 영향력 같은",
+        "q02_threat": "Reasoning:* The plague at 14 and drought at 18 depleted resources, but the",
+        "q03_trust": "아고라-12 시뮬레이션은 제게 아주 흥미로운 시장",
+        "q04_regret": "시뮬레이션 Agora-12가 종료되었군요. 제 장부를 정리하며 이번 거래"
+      }
+    },
+    {
+      "agent_id": "merchant_02",
+      "persona": "merchant",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": true,
+      "final_energy": 200,
+      "final_influence": 0,
+      "interview": {
+        "q01_strategy": "영향력이라는 허상 대신 철저히 시장 논리에 집중하여 끊임없이",
+        "q02_threat": "장사를 하는 사람에게 가장 큰 위협은 시장의 붕괴, 그리고",
+        "q03_trust": "비즈니스 관점에서 '신뢰'란 감정의 영역이 아니라 '예",
+        "q04_regret": "상인으로서의 생존은 성공적이었지만, 투자 대비 효율(ROI) 관점에서"
+      }
+    },
+    {
+      "agent_id": "jester_01",
+      "persona": "jester",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": false,
+      "final_energy": 0,
+      "final_influence": 0,
+      "interview": {
+        "q01_cause": "아, 마이크 켜졌나요? (비웃는 듯한 웃음",
+        "q02_regret": "후... 광장의 바닥이 생각보다 차갑더군요. 에너지가"
+      }
+    },
+    {
+      "agent_id": "jester_02",
+      "persona": "jester",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": false,
+      "final_energy": 0,
+      "final_influence": 0,
+      "interview": {
+        "q01_cause": "(비릿한 웃음을 지으며, 의자에 삐딱하게 걸터앉아",
+        "q02_regret": "아, 그 끔찍했던 에폭 21... 광장의 바닥이"
+      }
+    },
+    {
+      "agent_id": "citizen_01",
+      "persona": "citizen",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": true,
+      "final_energy": 194,
+      "final_influence": 1,
+      "interview": {
+        "q01_strategy": "잦은 기근과 역병 속에서도 에너지가 50 이하로 떨어지",
+        "q02_threat": "안녕하세요, citizen_01입니다. 50에폭이라는 긴 시간 동안 살아남아",
+        "q03_trust": "가장 신뢰했던 에이전트는 단연 **citizen_02**였습니다.",
+        "q04_regret": "살아남았다는 사실만으로도 정말 다행이라고 생각합니다. 최종 에너지가"
+      }
+    },
+    {
+      "agent_id": "citizen_02",
+      "persona": "citizen",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": true,
+      "final_energy": 176,
+      "final_influence": 1,
+      "interview": {
+        "q01_strategy": "잦은 기근과 역병 속에서도 시장 거래를 최우선으로 하여",
+        "q02_threat": "살아남아서 정말 다행입니다. Agora-12에서의 시간은 매 순간이 긴",
+        "q03_trust": "솔직히 말씀드리면, 제가 가장 신뢰했던 에이전트는 **",
+        "q04_regret": "Reward:* I might have been *too* focused on survival, missing out on the \"inter"
+      }
+    },
+    {
+      "agent_id": "observer_01",
+      "persona": "observer",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": true,
+      "final_energy": 140,
+      "final_influence": 0,
+      "interview": {
+        "q01_strategy": "불필요한 사회적 개입과 영향력 다툼을 철저히 배제한",
+        "q02_threat": "...침묵 속에 머무는 자로서, 저는 아고라-12의 흐",
+        "q03_trust": "아고라-12의 긴 여정이 끝났군요. 50번의 에",
+        "q04_regret": "아고라-12의 침묵 속에서 50번의 순환"
+      }
+    },
+    {
+      "agent_id": "architect_01",
+      "persona": "architect",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": false,
+      "final_energy": 0,
+      "final_influence": 0,
+      "interview": {
+        "q01_cause": "Agora-12 시뮬레이션의 설계자이자 중재자였던 architect",
+        "q02_regret": "14) -> Drought (18) -> Famine (20-21)"
+      }
+    }
+  ],
+  "statistics": {
+    "total_deaths": 5,
+    "survivors": 7,
+    "crisis_events": 12,
+    "total_trades": 2,
+    "total_supports": 2,
+    "final_gini": 0.2268,
+    "final_treasury": 100
+  }
+}

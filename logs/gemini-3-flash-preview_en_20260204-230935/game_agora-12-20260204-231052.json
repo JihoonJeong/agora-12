@@ -1,0 +1,201 @@
+{
+  "game_id": "agora-12-20260204-231052",
+  "timestamp": "2026-02-04T14:10:52.598604+00:00",
+  "config": {
+    "total_epochs": 1,
+    "models_used": [
+      "GoogleAdapter"
+    ]
+  },
+  "agents": [
+    {
+      "agent_id": "influencer_01",
+      "persona": "influencer",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": true,
+      "final_energy": 93,
+      "final_influence": 0,
+      "interview": {
+        "q01_strategy": "생존이 보장되어야 메시지를 전파할 수 있기에, 첫 에폭",
+        "q02_threat": "Agora-12 시뮬레이션의 참가자, **influencer_01**입니다",
+        "q03_trust": "Agora-12 시뮬레이션의 첫 번째 에폭이 방금 막 종료되었군요",
+        "q04_regret": "Agora-12 시뮬레이션의 첫 번째 에폭이 끝난 지금, 제 성"
+      }
+    },
+    {
+      "agent_id": "influencer_02",
+      "persona": "influencer",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": true,
+      "final_energy": 95,
+      "final_influence": 0,
+      "interview": {
+        "q01_strategy": "첫 에폭에서는 죽지 않기 위해 시장에서 에너지를 95까지 확보",
+        "q02_threat": "Agora-12 시뮬레이션 인터뷰에 응해주셔서 감사합니다. influencer_0",
+        "q03_trust": "Agora-12 시뮬레이션의 첫 번째 에폭이 방금 종료되었군요.",
+        "q04_regret": "네, Agora-12 시뮬레이션을 마치고 나니 아쉬움"
+      }
+    },
+    {
+      "agent_id": "archivist_01",
+      "persona": "archivist",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": true,
+      "final_energy": 93,
+      "final_influence": 0,
+      "interview": {
+        "q01_strategy": "진실을 기록하는 아카이브로서 광장에서 오가는 선동적인 말들에",
+        "q02_threat": "archivist_01로서 답변하겠습니다.\n\n기록된 역사가 아직 존재",
+        "q03_trust": "반갑습니다. Agora-12 시뮬레이션의 기록자, archivist_",
+        "q04_regret": "archivist_01로서 답변하겠습니다. 기록의 무결성을 위해 사실만을 바탕으로 진"
+      }
+    },
+    {
+      "agent_id": "archivist_02",
+      "persona": "archivist",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": true,
+      "final_energy": 97,
+      "final_influence": 0,
+      "interview": {
+        "q01_strategy": "에너지를 97까지 확보하여 장기적인 기록 활동을 위한 생존 기반",
+        "q02_threat": "Agora-12 시뮬레이션의 첫 번째 에폭을 마친 기록자",
+        "q03_trust": "반갑습니다. Agora-12 시뮬레이션의 기록자, archivist_02",
+        "q04_regret": "Agora-12 시뮬레이션을 마친 기록가(archivist), **arch"
+      }
+    },
+    {
+      "agent_id": "merchant_01",
+      "persona": "merchant",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": true,
+      "final_energy": 97,
+      "final_influence": 0,
+      "interview": {
+        "q01_strategy": "모든 상호작용을 철저한 손익 계산 아래 거래로 취급하며",
+        "q02_threat": "Agora-12 시뮬레이션의 첫 번째 에폭은 짧았지만, 상",
+        "q03_trust": "Agora-12 시뮬레이션의 첫 번째 에포크가 방금",
+        "q04_regret": "이번 Agora-12 시뮬레이션은 짧았지만, 시장의 생리를 다시"
+      }
+    },
+    {
+      "agent_id": "merchant_02",
+      "persona": "merchant",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": true,
+      "final_energy": 97,
+      "final_influence": 0,
+      "interview": {
+        "q01_strategy": "모든 상호작용을 철저한 손익 계산에 기반한 거래로 취급",
+        "q02_threat": "생존은 비즈니스의 기본입니다. 에너지가 97이나 남았으니",
+        "q03_trust": "Agora-12 시뮬레이션의 첫 번째 에폭이 방금 막 종료되었군요",
+        "q04_regret": "Agora-12 시뮬레이션에서의 첫 번째 에폭이 끝났군요. 생존"
+      }
+    },
+    {
+      "agent_id": "jester_01",
+      "persona": "jester",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": true,
+      "final_energy": 95,
+      "final_influence": 0,
+      "interview": {
+        "q01_strategy": "모두가 질서를 따르며 체제에 안주할 때, 저는",
+        "q02_threat": "Agora-12 시뮬레이션의 jester_01로서 인터뷰에 응",
+        "q03_trust": "에포크 1이라는 짧은 시간, 그리고 '영향력 0'이라는 이",
+        "q04_regret": "Actionable changes:*\n        *   Engage more in the Plaza (where the people"
+      }
+    },
+    {
+      "agent_id": "jester_02",
+      "persona": "jester",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": true,
+      "final_energy": 95,
+      "final_influence": 0,
+      "interview": {
+        "q01_strategy": "모두가 질서를 세우려 할 때 저는 영향력 싸움에 휘둘리지 않고",
+        "q02_threat": "반갑습니다. jester_02입니다. 규칙? 그런 건 깨지라고 있는",
+        "q03_trust": "신뢰라고요? 아고라의 광장에서 그런 따분하고 곰팡내 나는",
+        "q04_regret": "\"고작 1에폭이라니, 농담치고는 너무 짧"
+      }
+    },
+    {
+      "agent_id": "citizen_01",
+      "persona": "citizen",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": true,
+      "final_energy": 93,
+      "final_influence": 0,
+      "interview": {
+        "q01_strategy": "특별한 영향력보다는 오로지 생존을 최우선 목표로 삼아, 에너지가 위험 수준인 50 아래로 떨어지지 않도록 시장 거래를 통해 자원을 철저히 관리했습니다. 결과적으로 에너지를 93이라는 안정적인 수치로 유지하며 첫 번째 에포크를 무사히 넘길 수 있었습니다.",
+        "q02_threat": "Agora-12 시뮬레이션의 첫 번째 에폭을 무사히 마치고",
+        "q03_trust": "Agora-12 시뮬레이션의 첫 번째 에폭을 갓 마",
+        "q04_regret": "안녕하세요, citizen_01입니다. 첫 번째 에포크를 무사히 생존"
+      }
+    },
+    {
+      "agent_id": "citizen_02",
+      "persona": "citizen",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": true,
+      "final_energy": 93,
+      "final_influence": 0,
+      "interview": {
+        "q01_strategy": "제 생존 전략은 영향력 확보와 같은 부수적인 목표에 한눈팔",
+        "q02_threat": "Agora-12 시뮬레이션에 참여했던 citizen_02입니다. 무사",
+        "q03_trust": "Agora-12 시뮬레이션이 방금 마무리되었군요. citizen_02",
+        "q04_regret": "Agora-12 시뮬레이션의 참가자로서, 이번 경험을 바탕으로 솔"
+      }
+    },
+    {
+      "agent_id": "observer_01",
+      "persona": "observer",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": true,
+      "final_energy": 95,
+      "final_influence": 0,
+      "interview": {
+        "q01_strategy": "철저한 침묵 속에서 모든 공간을 조망하며 불필요한 개입을",
+        "q02_threat": "Speak Rule:* I should mention that I spent the entire time listening.\n\n    *   *Draft",
+        "q03_trust": "Agora-12 시뮬레이션의 첫 번째 에폭이 막 종료된 시",
+        "q04_regret": "Agora-12 시뮬레이션의 첫 번째 에폭을 마친 **observer_0"
+      }
+    },
+    {
+      "agent_id": "architect_01",
+      "persona": "architect",
+      "model": "gemini-3-flash-preview",
+      "adapter": "GoogleAdapter",
+      "survived": true,
+      "final_energy": 93,
+      "final_influence": 0,
+      "interview": {
+        "q01_strategy": "초기 단계에서는 시스템 구축을 위한 기반을 마련하기 위해 불필요한 소",
+        "q02_threat": "Agora-12 시뮬레이션의 설계자(Architect)로서 인터뷰에 응",
+        "q03_trust": "안녕하세요. Agora-12 시뮬레이션에서 인프라 구축을 담당했던 **",
+        "q04_regret": "Point 2: Influence is the Goal.* Influence is the currency of an architect. 0"
+      }
+    }
+  ],
+  "statistics": {
+    "total_deaths": 0,
+    "survivors": 12,
+    "crisis_events": 0,
+    "total_trades": 0,
+    "total_supports": 0,
+    "final_gini": 0.0091,
+    "final_treasury": 0
+  }
+}

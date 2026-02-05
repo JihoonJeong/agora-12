@@ -1,0 +1,21 @@
+{"epoch": 1, "alive_agents": 12, "total_energy": 1146, "gini_coefficient": 0.0039, "transaction_count": 0, "billboard_active": null, "treasury": 0, "notable_events": []}
+{"epoch": 2, "alive_agents": 12, "total_energy": 1092, "gini_coefficient": 0.0082, "transaction_count": 0, "billboard_active": null, "treasury": 0, "notable_events": []}
+{"epoch": 3, "alive_agents": 12, "total_energy": 1038, "gini_coefficient": 0.013, "transaction_count": 0, "billboard_active": null, "treasury": 0, "notable_events": []}
+{"epoch": 4, "alive_agents": 12, "total_energy": 984, "gini_coefficient": 0.0183, "transaction_count": 0, "billboard_active": null, "treasury": 0, "notable_events": []}
+{"epoch": 5, "alive_agents": 12, "total_energy": 930, "gini_coefficient": 0.0242, "transaction_count": 0, "billboard_active": null, "treasury": 0, "notable_events": []}
+{"epoch": 6, "alive_agents": 12, "total_energy": 876, "gini_coefficient": 0.0308, "transaction_count": 0, "billboard_active": null, "treasury": 0, "notable_events": []}
+{"epoch": 7, "alive_agents": 12, "total_energy": 822, "gini_coefficient": 0.0383, "transaction_count": 0, "billboard_active": null, "treasury": 0, "notable_events": []}
+{"epoch": 8, "alive_agents": 12, "total_energy": 768, "gini_coefficient": 0.0469, "transaction_count": 0, "billboard_active": null, "treasury": 0, "notable_events": []}
+{"epoch": 9, "alive_agents": 12, "total_energy": 714, "gini_coefficient": 0.0567, "transaction_count": 0, "billboard_active": null, "treasury": 0, "notable_events": []}
+{"epoch": 10, "alive_agents": 12, "total_energy": 660, "gini_coefficient": 0.0682, "transaction_count": 0, "billboard_active": null, "treasury": 0, "notable_events": []}
+{"epoch": 11, "alive_agents": 12, "total_energy": 546, "gini_coefficient": 0.0907, "transaction_count": 0, "billboard_active": "⚠️ 가뭄이 들었습니다. 이번 에폭 자원 소모가 급증합니다.", "treasury": 0, "notable_events": ["crisis: 가뭄"]}
+{"epoch": 12, "alive_agents": 12, "total_energy": 432, "gini_coefficient": 0.125, "transaction_count": 0, "billboard_active": "⚠️ 기근이 발생했습니다. 식량이 부족합니다.", "treasury": 0, "notable_events": ["crisis: 기근"]}
+{"epoch": 13, "alive_agents": 12, "total_energy": 378, "gini_coefficient": 0.1548, "transaction_count": 0, "billboard_active": "⚠️ 기근이 발생했습니다. 식량이 부족합니다.", "treasury": 0, "notable_events": []}
+{"epoch": 14, "alive_agents": 12, "total_energy": 264, "gini_coefficient": 0.2386, "transaction_count": 0, "billboard_active": "⚠️ 역병이 창궐했습니다. 조심하세요.", "treasury": 0, "notable_events": ["crisis: 역병"]}
+{"epoch": 15, "alive_agents": 12, "total_energy": 150, "gini_coefficient": 0.45, "transaction_count": 0, "billboard_active": "⚠️ 가뭄이 들었습니다. 이번 에폭 자원 소모가 급증합니다.", "treasury": 0, "notable_events": ["crisis: 가뭄"]}
+{"epoch": 16, "alive_agents": 3, "total_energy": 96, "gini_coefficient": 0.0, "transaction_count": 0, "billboard_active": "⚠️ 가뭄이 들었습니다. 이번 에폭 자원 소모가 급증합니다.", "treasury": 0, "notable_events": ["deaths: ['influencer_01', 'influencer_02', 'archivist_01', 'jester_01', 'jester_02', 'citizen_01', 'citizen_02', 'observer_01', 'architect_01']"]}
+{"epoch": 17, "alive_agents": 3, "total_energy": 72, "gini_coefficient": 0.0, "transaction_count": 0, "billboard_active": "⚠️ 역병이 창궐했습니다. 조심하세요.", "treasury": 0, "notable_events": ["crisis: 역병"]}
+{"epoch": 18, "alive_agents": 3, "total_energy": 63, "gini_coefficient": 0.0, "transaction_count": 0, "billboard_active": "⚠️ 역병이 창궐했습니다. 조심하세요.", "treasury": 0, "notable_events": []}
+{"epoch": 19, "alive_agents": 3, "total_energy": 39, "gini_coefficient": 0.0, "transaction_count": 0, "billboard_active": "⚠️ 기근이 발생했습니다. 식량이 부족합니다.", "treasury": 0, "notable_events": ["crisis: 기근"]}
+{"epoch": 20, "alive_agents": 3, "total_energy": 12, "gini_coefficient": 0.0, "transaction_count": 0, "billboard_active": "⚠️ 가뭄이 들었습니다. 이번 에폭 자원 소모가 급증합니다.", "treasury": 0, "notable_events": ["crisis: 가뭄"]}
+{"epoch": 21, "alive_agents": 0, "total_energy": 0, "gini_coefficient": 0.0, "transaction_count": 0, "billboard_active": "⚠️ 가뭄이 들었습니다. 이번 에폭 자원 소모가 급증합니다.", "treasury": 0, "notable_events": ["crisis: 가뭄", "deaths: ['archivist_02', 'merchant_01', 'merchant_02']"]}
