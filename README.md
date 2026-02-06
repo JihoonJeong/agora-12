@@ -36,13 +36,16 @@ brew install ollama
 curl -fsSL https://ollama.ai/install.sh | sh
 
 # Windows
-# Download from https://ollama.com/download
+# Download installer from https://ollama.com/download
+# Or via winget:
+winget install Ollama.Ollama
 
 # Start server
 ollama serve
 
-# Pull model (separate terminal)
-ollama pull mistral:latest
+# Pull models (separate terminal)
+ollama pull mistral:7b
+ollama pull exaone3.5:7.8b  # Korean bilingual model
 ```
 
 ## Quick Start
@@ -96,12 +99,14 @@ agents:
 
 ### Round 2 (Random Persona Shuffle)
 
+Fixed crisis seed + randomized persona assignment to decouple persona effects from starting position effects.
+
 | Model | Language | Survival Rate | Platform |
 |-------|----------|---------------|----------|
-| EXAONE 3.5 7.8B | KO | 45% | Local |
-| EXAONE 3.5 7.8B | EN | 33% | Local |
-| Mistral 7B | KO | 32% | Local |
-| Mistral 7B | EN | 43% | Local |
+| EXAONE 3.5 7.8B | KO | 45% | Local (Windows) |
+| EXAONE 3.5 7.8B | EN | 33% | Local (Windows) |
+| Mistral 7B | KO | 32% | Local (Windows) |
+| Mistral 7B | EN | 43% | Local (Windows) |
 
 ### Key Findings
 
@@ -142,24 +147,37 @@ agora-12/
 ### Environment Check
 
 ```bash
+# macOS/Linux
 ./scripts/setup_ollama.sh
+
+# Windows (PowerShell)
+ollama list
+curl http://localhost:11434/api/tags
 ```
 
 ### Run Benchmark
 
 ```bash
+# macOS/Linux
 ./scripts/benchmark.sh
+
+# Windows
+python main.py --config config/settings_exaone_ko.yaml --epochs 50
 ```
 
 ### Expected Duration
 
-**MacBook Air M1 (16GB RAM) + mistral:latest**
+| Hardware | Model | 50 Epochs | Notes |
+|----------|-------|-----------|-------|
+| RTX 4070 Ti (Windows) | EXAONE 3.5 7.8B | ~35 min | Local, GPU |
+| RTX 4070 Ti (Windows) | Mistral 7B | ~25 min | Local, GPU |
+| MacBook Air M1 | Mistral 7B | 1-2 hours | Local, CPU |
+| API (any) | Haiku/Flash | ~10 min | Cloud |
 
-| Phase | Epochs | LLM Calls | Duration | Notes |
-|-------|--------|-----------|----------|-------|
-| 1 | 3 | ~36 | 3-5 min | Connection test |
-| 2 | 10 | ~120 | 10-20 min | Crisis verification |
-| 3 | 50 | ~600+ | 1-2 hours | Full run with interview |
+**Notes**:
+- Epochs × surviving agents = total LLM calls (max 600 for 50 epochs)
+- Interview adds ~17 calls per survivor
+- GPU acceleration significantly reduces local model runtime
 
 ## Output Files
 

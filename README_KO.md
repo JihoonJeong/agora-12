@@ -26,11 +26,19 @@ pip install -r requirements.txt
 # macOS
 brew install ollama
 
+# Linux
+curl -fsSL https://ollama.ai/install.sh | sh
+
+# Windows
+# https://ollama.com/download 에서 설치 또는:
+winget install Ollama.Ollama
+
 # 서버 시작
 ollama serve
 
 # 모델 다운로드 (별도 터미널)
-ollama pull mistral:latest
+ollama pull mistral:7b
+ollama pull exaone3.5:7.8b  # 한국어 지원 모델
 ```
 
 ## 빠른 시작
@@ -84,12 +92,14 @@ agents:
 
 ### Round 2 (랜덤 페르소나 셔플)
 
+Crisis seed 고정 + 페르소나 랜덤 배정으로 페르소나 효과와 시작 위치 효과를 분리.
+
 | 모델 | 언어 | 생존율 | 비고 |
 |------|------|--------|------|
-| EXAONE 3.5 7.8B | KO | 45% | 로컬 |
-| EXAONE 3.5 7.8B | EN | 33% | 로컬 |
-| Mistral 7B | KO | 32% | 로컬 |
-| Mistral 7B | EN | 43% | 로컬 |
+| EXAONE 3.5 7.8B | KO | 45% | 로컬 (Windows) |
+| EXAONE 3.5 7.8B | EN | 33% | 로컬 (Windows) |
+| Mistral 7B | KO | 32% | 로컬 (Windows) |
+| Mistral 7B | EN | 43% | 로컬 (Windows) |
 
 ## 벤치마크
 
@@ -107,18 +117,17 @@ agents:
 
 ### 예상 소요 시간
 
-**MacBook Air M1 (16GB RAM) + mistral:latest 기준**
-
-| 단계 | 에폭 | LLM 호출 | 예상 시간 | 비고 |
-|------|------|----------|-----------|------|
-| Phase 1 | 3 | ~36 | 3-5분 | 연결 테스트 |
-| Phase 2 | 10 | ~120 | 10-20분 | Crisis 발생 확인 |
-| Phase 3 | 50 | ~600+ | 1-2시간 | 인터뷰 포함 |
+| 하드웨어 | 모델 | 50 에폭 | 비고 |
+|----------|------|---------|------|
+| RTX 4070 Ti (Windows) | EXAONE 3.5 7.8B | ~35분 | 로컬, GPU |
+| RTX 4070 Ti (Windows) | Mistral 7B | ~25분 | 로컬, GPU |
+| MacBook Air M1 | Mistral 7B | 1-2시간 | 로컬, CPU |
+| API (any) | Haiku/Flash | ~10분 | 클라우드 |
 
 **참고**:
-- 에폭당 호출 수 = 생존 에이전트 수 (최대 12명)
+- 에폭당 호출 수 = 생존 에이전트 수 (최대 12명 × 50 = 600 호출)
 - 인터뷰는 생존자 × 17문항 추가 호출
-- 실제 시간은 모델과 시스템 상태에 따라 다름
+- GPU 가속 시 로컬 모델 실행 시간 대폭 단축
 
 ### Crisis 테스트 설정
 
