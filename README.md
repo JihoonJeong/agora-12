@@ -1,16 +1,24 @@
-# Agora-12: AI 에이전트 사회 실험 시뮬레이터
+# Agora-12: AI Agent Social Experiment Simulator
 
-12명의 AI 에이전트가 제한된 자원 환경에서 생존하며 사회적 관계를 형성하는 시뮬레이션입니다.
+**English** | [한국어](README_KO.md)
 
-## 특징
+A simulation where 12 AI agents survive in a resource-constrained environment while forming social relationships.
 
-- **12명의 페르소나**: Architect, Influencer, Archivist, Merchant, Jester, Citizen, Observer
-- **자원 시스템**: 에너지 (생존), 영향력 (사회적 지위)
-- **다양한 행동**: 발언, 이동, 거래, 지지, 귓속말
-- **위기 이벤트**: 가뭄, 역병, 기근
-- **LLM 지원**: Ollama (로컬), Claude, GPT, Gemini
+## Overview
 
-## 설치
+Agora-12 is the first experiment of the **AI Ludens** project, exploring the question: *"Can AI agents survive in a resource-limited environment?"*
+
+Each agent starts with 100 energy and must survive 50 turns by choosing actions: **trade**, **speak**, **support**, or **rest**. The experiment investigates emergent social behaviors, cooperation patterns, and survival strategies across different LLM models and languages.
+
+## Key Features
+
+- **12 Personas**: Architect, Influencer, Archivist, Merchant, Jester, Citizen, Observer
+- **Resource System**: Energy (survival) and Influence (social status)
+- **Actions**: Speak, Move, Trade, Support, Whisper
+- **Crisis Events**: Drought, Plague, Famine
+- **Multi-LLM Support**: Ollama (local), Claude, GPT, Gemini
+
+## Installation
 
 ```bash
 git clone https://github.com/JihoonJeong/agora-12.git
@@ -18,46 +26,52 @@ cd agora-12
 pip install -r requirements.txt
 ```
 
-### Ollama 설치 (로컬 LLM)
+### Ollama Setup (Local LLM)
 
 ```bash
 # macOS
 brew install ollama
 
-# 서버 시작
+# Linux
+curl -fsSL https://ollama.ai/install.sh | sh
+
+# Windows
+# Download from https://ollama.com/download
+
+# Start server
 ollama serve
 
-# 모델 다운로드 (별도 터미널)
+# Pull model (separate terminal)
 ollama pull mistral:latest
 ```
 
-## 빠른 시작
+## Quick Start
 
 ```bash
-# Mock 모드 (LLM 없이 테스트)
+# Mock mode (test without LLM)
 python main.py --epochs 10
 
-# Ollama 모드
+# Ollama mode
 cp config/settings_benchmark.yaml config/settings.yaml
 python main.py --epochs 10
 
-# 플레이어 참여
+# Player mode (participate as an agent)
 python main.py --mode player --as merchant_01
 
-# 사후 인터뷰 포함
-python main.py --epochs 50 --interview
+# With post-game interview
+python main.py --epochs 50
 ```
 
-## 설정
+## Configuration
 
-`config/settings.yaml`에서 어댑터와 모델을 지정합니다:
+Specify adapters and models in `config/settings.yaml`:
 
 ```yaml
-# 기본 어댑터
+# Default adapter
 default_adapter: ollama    # mock, ollama, anthropic, openai, google
 default_model: mistral:latest
 
-# 에이전트별 개별 지정 가능
+# Per-agent override
 agents:
   - id: architect_01
     persona: architect
@@ -65,91 +79,118 @@ agents:
     model: claude-3-5-sonnet-20241022
 ```
 
-## 벤치마크
+## Experiment Results
 
-### 환경 확인
+### Round 1 (Fixed Persona Assignment)
+
+| Model | Language | Survival Rate | Platform |
+|-------|----------|---------------|----------|
+| EXAONE 3.5 7.8B | KO | 58% | Local |
+| EXAONE 3.5 7.8B | EN | 50% | Local |
+| Mistral 7B | KO | 38% | Local |
+| Mistral 7B | EN | 42% | Local |
+| Claude Haiku 4.5 | KO | 72% | API |
+| Claude Haiku 4.5 | EN | 60% | API |
+| Gemini Flash 3 | KO | 30% | API |
+| Gemini Flash 3 | EN | 60% | API |
+
+### Round 2 (Random Persona Shuffle)
+
+| Model | Language | Survival Rate | Platform |
+|-------|----------|---------------|----------|
+| EXAONE 3.5 7.8B | KO | 45% | Local |
+| EXAONE 3.5 7.8B | EN | 33% | Local |
+| Mistral 7B | KO | 32% | Local |
+| Mistral 7B | EN | 43% | Local |
+
+### Key Findings
+
+- **"The Eloquent Extinction"**: AI agents often choose conversation over survival, leading to collective death
+- **Language Effect**: Korean prompts generally yield higher survival rates for Korean-trained models (EXAONE)
+- **Model Variance**: Claude Haiku shows highest overall survival; Gemini Flash shows high variance between languages
+
+## Data
+
+All experiment data is available in the `data/` directory:
+
+| File | Description |
+|------|-------------|
+| `agora12_all_epoch_summary.jsonl` | Consolidated epoch summaries (3,000 records) |
+| `agora12_all_simulation_log.jsonl` | Consolidated action logs (24,923 records) |
+
+Each record includes metadata: `dataset`, `model`, `language`, `condition`, `run`.
+
+## Project Structure
+
+```
+agora-12/
+├── agora/
+│   ├── core/           # Core simulation logic
+│   ├── adapters/       # LLM adapters (mock, ollama, anthropic, etc.)
+│   ├── interfaces/     # CLI interface
+│   └── analysis/       # Post-game interview module
+├── config/             # Configuration files
+├── data/               # Experiment data (JSONL)
+├── logs/               # Simulation logs
+├── reports/            # Interview reports
+├── scripts/            # Utility scripts
+└── main.py             # Entry point
+```
+
+## Benchmark
+
+### Environment Check
 
 ```bash
 ./scripts/setup_ollama.sh
 ```
 
-### 단계별 실행
+### Run Benchmark
 
 ```bash
 ./scripts/benchmark.sh
 ```
 
-### 예상 소요 시간
+### Expected Duration
 
-**MacBook Air M1 (16GB RAM) + mistral:latest 기준**
+**MacBook Air M1 (16GB RAM) + mistral:latest**
 
-| 단계 | 에폭 | LLM 호출 | 예상 시간 | 비고 |
-|------|------|----------|-----------|------|
-| Phase 1 | 3 | ~36 | 3-5분 | 연결 테스트 |
-| Phase 2 | 10 | ~120 | 10-20분 | Crisis 발생 확인 |
-| Phase 3 | 50 | ~600+ | 1-2시간 | 인터뷰 포함 |
+| Phase | Epochs | LLM Calls | Duration | Notes |
+|-------|--------|-----------|----------|-------|
+| 1 | 3 | ~36 | 3-5 min | Connection test |
+| 2 | 10 | ~120 | 10-20 min | Crisis verification |
+| 3 | 50 | ~600+ | 1-2 hours | Full run with interview |
 
-**참고**:
-- 에폭당 호출 수 = 생존 에이전트 수 (최대 12명)
-- 인터뷰는 생존자 × 17문항 추가 호출
-- 실제 시간은 모델과 시스템 상태에 따라 다름
+## Output Files
 
-### Crisis 테스트 설정
+| File | Description |
+|------|-------------|
+| `logs/{run_id}/simulation_log.jsonl` | All action logs |
+| `logs/{run_id}/epoch_summary.jsonl` | Per-epoch summary |
+| `logs/{run_id}/metadata.json` | Run metadata (seed, persona map) |
+| `logs/{run_id}/report_*.md` | Interview report |
 
-벤치마크용 설정 (`config/settings_benchmark.yaml`):
-
-```yaml
-crisis:
-  start_after_epoch: 10   # 기본 30 → 10
-  probability: 0.3        # 기본 0.1 → 0.3 (30%)
-```
-
-## 프로젝트 구조
-
-```
-agora-12/
-├── agora/
-│   ├── core/           # 핵심 시뮬레이션 로직
-│   ├── adapters/       # LLM 어댑터 (mock, ollama, anthropic, etc.)
-│   ├── interfaces/     # CLI 인터페이스
-│   └── analysis/       # 사후 인터뷰 모듈
-├── config/
-│   ├── settings.yaml           # 메인 설정
-│   └── settings_benchmark.yaml # 벤치마크용 설정
-├── scripts/
-│   ├── setup_ollama.sh   # 환경 확인 스크립트
-│   └── benchmark.sh      # 단계별 벤치마크
-├── tests/              # 테스트
-├── logs/               # 시뮬레이션 로그
-├── reports/            # 인터뷰 리포트
-└── main.py             # 진입점
-```
-
-## 출력 파일
-
-| 파일 | 설명 |
-|------|------|
-| `logs/simulation_log.jsonl` | 모든 행동 로그 |
-| `logs/epoch_summary.jsonl` | 에폭별 요약 |
-| `reports/game_{timestamp}.json` | 인터뷰 결과 (JSON) |
-| `reports/report_{timestamp}.md` | 인터뷰 리포트 (Markdown) |
-
-## 테스트
+## Testing
 
 ```bash
 pytest -v
 ```
 
-## 문서
+## Team (The Dual Lab)
 
-- [Phase 1 완료 리포트](docs/progress/phase1-complete.md)
-- [Phase 2 완료 리포트](docs/progress/phase2-complete.md)
-- [Phase 3 완료 리포트](docs/progress/phase3-complete.md)
+### Moderator
+- **JJ** (Human): Project lead
 
-## 기획
+### Windows Lab
+- **Theo** (Claude): Planning, logical design, data interpretation
+- **Cas** (Gemini): Behavioral ecology, outlier analysis, red teaming
+- **Ray** (Claude Code): Engineering, local model experiments
 
-이 프로젝트는 Claude와 Gemini의 공동 기획으로 진행되었습니다.
+### Mac Lab
+- **Luca** (Claude): Theoretical framework, discussion
+- **Gem** (Gemini): Statistical analysis, visualization
+- **Cody** (Claude Code): Engineering, API model experiments
 
-## 라이선스
+## License
 
 MIT
